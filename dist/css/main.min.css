@@ -1,2 +1,2 @@
-html{height:100vh;width:100%}html body{width:100%;max-height:100vh}html body .container{width:80vw;height:80vh}html body .content .screen{display:none}html body .screen.active{display:block}body{background:url(../../img/sunrise2.jpg) center/cover}
+html,body{height:100%;overflow:auto}html .container,body .container{width:80vw;height:80vh}html .background-level,body .background-level{height:60vh;background:rgba(0,0,0,0.4);margin:20vh auto;width:100%}html .content .screen,body .content .screen{display:none}html .screen.active,body .screen.active{display:block}body{background:url(../../img/sunrise2.jpg) center/cover}
 /*# sourceMappingURL=main.min.css.map */

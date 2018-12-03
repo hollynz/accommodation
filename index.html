@@ -13,6 +13,9 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
+    <!-- Swipe/slide effect for user inputs -->
+    <link rel="stylesheet" href="<link rel=" stylesheet " href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css
+        ">">
     <link rel="stylesheet" href="dist/css/main.min.css">
 </head>
 
@@ -24,16 +27,38 @@
 
     <main class="content">
         <!-- PUT THIS SOMEWHERE!!! -->
-        <div class="container">
-            <div id="userInput" class="screen active">
-                <h1>Screen 1</h1>
-            </div>
-            <div id="accommOptions" class="screen">
-                <h1>Screen 2</h1>
+        <!-- <div class="container"> -->
+        <div id="userInput" class="screen active">
+            <div class="background-level level">
+                <div class="form-container">
+                    <!-- LOGO -->
+                    <!-- LINE -->
+                    <!-- TITLES & NAV BUTTONS -->
+                    <form class="when-input" onsubmit="return false">
+
+                    </form>
+                    <form class="where-input" onsubmit="return false">
+
+                    </form>
+                    <form class="who-input" onsubmit="return false">
+
+                    </form>
+                    <form class="what-input" onsubmit="return false">
+
+                    </form>
+                </div>
             </div>
         </div>
+        <div id="accommOptions" class="screen">
+            <h1>Screen 2</h1>
+        </div>
+        <!-- </div> -->
     </main>
 
+    <!-- Swipe/slide effect for user inputs: https://api.jqueryui.com/slide-effect/ -->
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Swipe/slide -->
     <script src="js/main.js" async defer></script>
 </body>
 
