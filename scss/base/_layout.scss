@@ -1,0 +1,22 @@
+html {
+    height: 100vh;
+    width: 100%;
+    body {
+        width: 100%;
+        max-height: 100vh;
+        .container {
+            width: 80vw;
+            // background: red;
+            height: 80vh;
+        }
+
+         /* screens */
+        .content .screen {
+            display: none;
+        }
+        .screen.active {
+            display: block;
+        }
+    }
+}
+

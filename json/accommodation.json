@@ -1,0 +1,40 @@
+{
+    "accommodation": [
+        {
+            "id": 0,
+            "name": "Hostel",
+            "unitCapacity": 1,
+            "unitPrice": 30,
+            "mealsAvailable": [0, 1, 2],
+            "mealsIncluded": [],
+            "imgSrc": ""
+        },
+        {
+            "id": 1,
+            "name": "Motel",
+            "unitCapacity": 4,
+            "unitPrice": 90,
+            "mealsAvailable": [],
+            "mealsIncluded": [],
+            "imgSrc": ""
+        },
+        {
+            "id": 2,
+            "name": "Hotel",
+            "unitCapacity": 2,
+            "unitPrice": 157,
+            "mealsAvailable": [0, 1, 2],
+            "mealsIncluded": [0],
+            "imgSrc": ""
+        },
+        {
+            "id": 3,
+            "name": "House",
+            "unitCapacity": 4,
+            "unitPrice": 240,
+            "mealsAvailable": [0, 2],
+            "mealsIncluded": [0, 2],
+            "imgSrc": ""
+        }
+    ]
+}
