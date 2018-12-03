@@ -14,8 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
     <!-- Swipe/slide effect for user inputs -->
-    <link rel="stylesheet" href="<link rel=" stylesheet " href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css
-        ">">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="dist/css/main.min.css">
 </head>
 
@@ -24,20 +23,70 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
+    <div class="container">
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://bulma.io">
+                    <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+                </a>
+
+                <a role="button" class="navbar-burger burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </div>
+
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item">
+                        Home
+                    </a>
+
+                    <a class="navbar-item">
+                        Documentation
+                    </a>
+                </div>
+
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button">
+                                <strong>Sign up</strong>
+                            </a>
+                            <a class="button is-light">
+                                Log in
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
 
     <main class="content">
-        <!-- PUT THIS SOMEWHERE!!! -->
+        <!-- PUT CONTAINER SOMEWHERE!!! -->
         <!-- <div class="container"> -->
         <div id="userInput" class="screen active">
             <div class="background-level level">
                 <div class="form-container">
-                    <!-- LOGO -->
-                    <!-- LINE -->
+                    <div class="form-container-top">
+                        <a class="logo" href="index.html">
+                            <img src="img/client-logo-site.png" alt="All Abroad">
+                        </a>
+                        <hr>
+                    </div>
+
                     <!-- TITLES & NAV BUTTONS -->
                     <form class="when-input" onsubmit="return false">
-
+                        <h2 class="title has-text-centered">WHEN?</h2>
+                        <div class="inputs">
+                            <input type="text" placeholder="From">
+                            <input type="text" placeholder="To">
+                        </div>
                     </form>
-                    <form class="where-input" onsubmit="return false">
+                    <!-- <form class="where-input" onsubmit="return false">
 
                     </form>
                     <form class="who-input" onsubmit="return false">
@@ -45,7 +94,7 @@
                     </form>
                     <form class="what-input" onsubmit="return false">
 
-                    </form>
+                    </form> -->
                 </div>
             </div>
         </div>
@@ -59,6 +108,20 @@
     <script src="//code.jquery.com/jquery-1.12.4.js"></script>
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- Swipe/slide -->
+
+
+    <!-- #toggle {
+        width: 100px;
+        height: 100px;
+        background: #ccc;
+      }
+    <script>
+        $(document).click(function () {
+            $("#toggle").toggle("slide");
+        });
+    </script> -->
+
+
     <script src="js/main.js" async defer></script>
 </body>
 

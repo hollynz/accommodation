@@ -5,13 +5,12 @@ html, body {
     .container {
         width: $width-80;
         // background: red;
-        height: $height-80;
     }
 
     .background-level {
         height: $height-60;
         background: $black-transp;
-        margin: $height-20 auto;
+        margin: $height-15 auto;
         width: $full;
     }
 
