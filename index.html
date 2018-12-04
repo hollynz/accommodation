@@ -14,9 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
     <!-- jQuery datepicker plugin: https://www.jqueryscript.net/time-clock/Highly-Customizable-jQuery-Datepicker-Plugin-Datepicker.html -->
-    <link rel="stylesheet" href="dist/datepicker.min.css">
+    <link rel="stylesheet" href="node_modules/@chenfengyuan/datepicker/dist/datepicker.min.css">
     <!-- Swipe/slide effect for user inputs -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="dist/css/main.min.css">
 </head>
 
@@ -78,16 +79,34 @@
                             <img src="img/client-logo-site.png" alt="All Abroad">
                         </a>
                         <hr>
+                        <div class="input-nav level">
+                                <i id="leftArrow" class="fas fa-chevron-circle-left"></i>
+                                <h2 id="inputTitle" class="title">WHEN?</h2>
+
+                                <i id="rightArrow" class="fas fa-chevron-circle-right"></i>
+                        </div>
                     </div>
 
-                    <!-- TITLES & NAV BUTTONS -->
-                    <form class="when-input" onsubmit="return false">
-                        <h2 class="title has-text-centered">WHEN?</h2>
-                        <div class="inputs">
-                            <input type="text" placeholder="From" data-toggle="datepicker">
-                            <input type="text" placeholder="To" data-toggle="datepicker">
+                    <form onsubmit="return false">
+                        <div id="inputContainer" class="input-container level">
+
+                            <div id="whenInput" class="when-input inputs">
+                                <input type="text" placeholder="From" data-toggle="datepicker">
+                                <input type="text" placeholder="To" data-toggle="datepicker">
+                            </div>
+                            <div id="whereInput" class="where-input inputs">
+                                <input type="text" placeholder="2" data-toggle="datepicker">
+                                <input type="text" placeholder="2" data-toggle="datepicker">
+                            </div>
+                            <div id="whoInput" class="who-input inputs">
+                                <input type="text" placeholder="3" data-toggle="datepicker">
+                                <input type="text" placeholder="3" data-toggle="datepicker">
+                            </div>
                         </div>
+
                     </form>
+                    
+
                     <!-- <form class="where-input" onsubmit="return false">
 
                     </form>
@@ -108,15 +127,17 @@
 
     <!-- jQuery cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <!-- jQuery datepicker plugin -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="dist/datepicker.min.js"></script>
+    <script src="node_modules/@chenfengyuan/datepicker/dist/datepicker.min.js"></script>
+
+
+
     <!-- Do I need these??? Swipe/slide effect for user inputs: https://api.jqueryui.com/slide-effect/ -->
-    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
     <!-- Swipe/slide -->
-
-
     <!-- #toggle {
         width: 100px;
         height: 100px;
@@ -129,7 +150,7 @@
     </script> -->
 
 
-    <script src="js/main.js" async defer></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
