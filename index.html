@@ -13,6 +13,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
+    <!-- jQuery datepicker plugin: https://www.jqueryscript.net/time-clock/Highly-Customizable-jQuery-Datepicker-Plugin-Datepicker.html -->
+    <link rel="stylesheet" href="dist/datepicker.min.css">
     <!-- Swipe/slide effect for user inputs -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="dist/css/main.min.css">
@@ -82,8 +84,8 @@
                     <form class="when-input" onsubmit="return false">
                         <h2 class="title has-text-centered">WHEN?</h2>
                         <div class="inputs">
-                            <input type="text" placeholder="From">
-                            <input type="text" placeholder="To">
+                            <input type="text" placeholder="From" data-toggle="datepicker">
+                            <input type="text" placeholder="To" data-toggle="datepicker">
                         </div>
                     </form>
                     <!-- <form class="where-input" onsubmit="return false">
@@ -104,7 +106,12 @@
         <!-- </div> -->
     </main>
 
-    <!-- Swipe/slide effect for user inputs: https://api.jqueryui.com/slide-effect/ -->
+    <!-- jQuery cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- jQuery datepicker plugin -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="dist/datepicker.min.js"></script>
+    <!-- Do I need these??? Swipe/slide effect for user inputs: https://api.jqueryui.com/slide-effect/ -->
     <script src="//code.jquery.com/jquery-1.12.4.js"></script>
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- Swipe/slide -->

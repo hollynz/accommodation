@@ -1,6 +1,6 @@
 .form-container {
     background-color: $brand-red;
-    height: 80%;
+    // height: 80%;
     margin: auto;
     width: 25vw;
     border-radius: 10px;
@@ -32,6 +32,10 @@
             width: 70%;
             padding: 2%;
             margin: 2% auto;
+            border-radius: $border-radius;
+        }
+        input:hover {
+            cursor: text;
         }
     }
 }

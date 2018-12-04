@@ -14,7 +14,6 @@ html .container, body .container {
 
 html .background-level, body .background-level {
   height: 60vh;
-  background: rgba(0, 0, 0, 0.4);
   margin: 15vh auto;
   width: 100%;
 }
@@ -37,8 +36,7 @@ body {
 }
 
 .form-container {
-  background-color: rgba(185, 17, 17, 0.7);
-  height: 80%;
+  background-color: rgba(185, 17, 17, 0.8);
   margin: auto;
   width: 25vw;
   border-radius: 10px;
@@ -96,5 +94,10 @@ body {
   width: 70%;
   padding: 2%;
   margin: 2% auto;
+  border-radius: 4px;
+}
+
+.form-container form input:hover {
+  cursor: text;
 }
 /*# sourceMappingURL=main.css.map */

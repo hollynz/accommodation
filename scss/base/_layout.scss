@@ -4,12 +4,11 @@ html, body {
 
     .container {
         width: $width-80;
-        // background: red;
     }
 
     .background-level {
         height: $height-60;
-        background: $black-transp;
+        // background: $black-transp;
         margin: $height-15 auto;
         width: $full;
     }
