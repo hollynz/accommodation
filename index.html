@@ -17,7 +17,11 @@
     <link rel="stylesheet" href="node_modules/@chenfengyuan/datepicker/dist/datepicker.min.css">
     <!-- Swipe/slide effect for user inputs -->
     <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"> -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    <!-- Leaflet maps plugin: https://leafletjs.com/ -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin="" />
     <link rel="stylesheet" href="dist/css/main.min.css">
 </head>
 
@@ -79,43 +83,57 @@
                             <img src="img/client-logo-site.png" alt="All Abroad">
                         </a>
                         <hr>
-                        <div class="input-nav level">
-                                <i id="leftArrow" class="fas fa-chevron-circle-left"></i>
-                                <h2 id="inputTitle" class="title">WHEN?</h2>
+                        <h2 id="inputTitle" class="title has-text-centered">WHEN?</h2>
 
-                                <i id="rightArrow" class="fas fa-chevron-circle-right"></i>
-                        </div>
                     </div>
 
                     <form onsubmit="return false">
                         <div id="inputContainer" class="input-container level">
 
                             <div id="whenInput" class="when-input inputs">
-                                <input type="text" placeholder="From" data-toggle="datepicker">
-                                <input type="text" placeholder="To" data-toggle="datepicker">
+                                <input class="input" type="text" placeholder="From" data-toggle="datepicker">
+                                <input class="input" type="text" placeholder="To" data-toggle="datepicker">
                             </div>
                             <div id="whereInput" class="where-input inputs">
-                                <input type="text" placeholder="2" data-toggle="datepicker">
-                                <input type="text" placeholder="2" data-toggle="datepicker">
+                                <div class="field">
+                                    <control class="control has-icons-left">
+                                        <input class="search-bar input" type="text" placeholder="Search">
+                                        <span class="icon is-left">
+                                            <i class="fas fa-search"></i>
+                                        </span>
+                                    </control>
+                                </div>
+
+                                <div id="map" class="map"></div>
                             </div>
                             <div id="whoInput" class="who-input inputs">
-                                <input type="text" placeholder="3" data-toggle="datepicker">
-                                <input type="text" placeholder="3" data-toggle="datepicker">
+                                <div class="columns">
+                                    <div class="column is-half">
+                                        <button class="button" data-value="1">1</button>
+                                        <button class="button" data-value="3">3</button>
+
+                                    </div>
+                                    <div class="column is-half">
+                                        <button class="button" data-value="2">2</button>
+                                        <button class="button" data-value="4">4</button>
+
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
 
-                    </form>
-                    
-
-                    <!-- <form class="where-input" onsubmit="return false">
 
                     </form>
-                    <form class="who-input" onsubmit="return false">
 
-                    </form>
-                    <form class="what-input" onsubmit="return false">
+                    <!-- Navigation -->
+                    <div class="input-nav level">
+                        <i id="leftArrow" class="fas fa-chevron-circle-left"></i>
 
-                    </form> -->
+                        <i id="rightArrow" class="fas fa-chevron-circle-right"></i>
+                        <i id="finishButton" class="far fa-check-circle"></i>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -131,6 +149,10 @@
     <!-- jQuery datepicker plugin -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="node_modules/@chenfengyuan/datepicker/dist/datepicker.min.js"></script>
+
+    <!-- Leaflet JS (maps) -->
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+        crossorigin=""></script>
 
 
 

@@ -1,7 +1,5 @@
 .form-container {
     background-color: $brand-red;
-    height: 60vh;
-    // overflow-y: visible;
     margin: auto;
     width: 25vw;
     border-radius: 10px;
@@ -22,55 +20,86 @@
         width: 90%;
         align-self: center;
     }
-    .input-nav {
-        display: flex;
-        justify-content: space-between;
-        .fa-chevron-circle-right, .fa-chevron-circle-left {
-            color: yellow;
-            text-align: right;
-            font-size: 2.6em;
-        }
-        .fa-chevron-circle-right:hover, .fa-chevron-circle-left:hover {
-            cursor: pointer;
-        }
-    }
+    
     form {
-        height: 30%;
+        margin-top: 2vh;
+        height: 25vh;
         overflow: hidden;
         .input-container {
             position: relative;
             width: 4000px;
-            height: 70%;
+            height: 100%;
             max-width: 100%;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             .inputs {
+                height: 100%;
                 position: absolute;
                 float: left;
                 display: flex;
                 flex-direction: column;
-                max-width: 70%;
+                // max-width: 70%;
+                width: 15vw;
                 margin: 0 10%;
+            }
+            .input {
+                width: 15vw;
+                margin: 2% auto;
+                font-size: 1.6em;
+            }
+            .input:hover {
+                cursor: text;
             }
             .when-input {
                 left: 0;
+                justify-content: space-around;                
             }
             .where-input {
                 left: 400px;
+                margin: 0;
+                font-size: 1.6em;
+                .input {
+                    max-width: 19vw;
+                    width: 19vw;
+                }
+                .icon {
+                    height: 1.8em;
+                    font-size: 1.6em;
+                }
+                .map {
+                    width: 19vw;
+                    height: 100%;
+                    border-radius: $border-radius;
+                }
             }
             .who-input {
-                left: 800px;
-            }
-            input {
                 width: 15vw;
-                padding: 2%;
-                margin: 2% auto;
-                border-radius: $border-radius;
+                left: 800px;
+                justify-content: space-around;
+                .column {
+                    align-content: space-between;
+                }
+                .button {
+                    width: 100%;
+                }
             }
-            input:hover {
-                cursor: text;
-            }
+        }
+    }
+    .input-nav {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 8%;
+        .fa-chevron-circle-right, .fa-chevron-circle-left, .fa-check-circle {
+            color: yellow;
+            text-align: right;
+            font-size: 2.6em;
+        }
+        .fa-chevron-circle-right:hover, .fa-chevron-circle-left:hover, .fa-check-circle:hover {
+            cursor: pointer;
+        }
+        .fa-check-circle {
+            display: none;
         }
     }
 }
