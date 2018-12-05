@@ -94,6 +94,7 @@
                                 <input class="input" type="text" placeholder="From" data-toggle="datepicker">
                                 <input class="input" type="text" placeholder="To" data-toggle="datepicker">
                             </div>
+
                             <div id="whereInput" class="where-input inputs">
                                 <div class="field">
                                     <control class="control has-icons-left">
@@ -106,21 +107,50 @@
 
                                 <div id="map" class="map"></div>
                             </div>
+
                             <div id="whoInput" class="who-input inputs">
                                 <div class="columns">
-                                    <div class="column is-half">
-                                        <button class="button" data-value="1">1</button>
-                                        <button class="button" data-value="3">3</button>
-
+                                    <div class="column">
+                                        <button class="button" value="1">1 guest</button>
+                                        <button class="button" value="3">3 guests</button>
+                                        <button class="button" value="5">5 guests</button>
                                     </div>
-                                    <div class="column is-half">
-                                        <button class="button" data-value="2">2</button>
-                                        <button class="button" data-value="4">4</button>
-
+                                    <div class="column">
+                                        <button class="button" value="2">2 guests</button>
+                                        <button class="button" value="4">4 guests</button>
+                                        <button class="button" value="6">6 guests</button>
                                     </div>
                                 </div>
+                                <input class="button" placeholder="More">
                             </div>
 
+                            <div id="whatInput" class="what-input inputs">
+                                <control class="control has-icons-left">
+                                    <button class="button">Hostel</button>
+                                    <span class="icon is-left">
+                                        <i class="fas fa-bed"></i>
+                                    </span>
+                                </control>
+                                <control class="control has-icons-left">
+                                    <button class="button">Motel</button>
+                                    <span class="icon is-left">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </control>
+                                <control class="control has-icons-left">
+                                    <button class="button">Hotel</button>
+                                    <span class="icon is-left">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </control>
+                                <control class="control has-icons-left">
+                                    <button class="button">House</button>
+                                    <span class="icon is-left">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </control>
+
+                            </div>
                         </div>
 
 
@@ -131,7 +161,7 @@
                         <i id="leftArrow" class="fas fa-chevron-circle-left"></i>
 
                         <i id="rightArrow" class="fas fa-chevron-circle-right"></i>
-                        <i id="finishButton" class="far fa-check-circle"></i>
+                        <i id="finishButton" class="fas fa-check-circle"></i>
                     </div>
 
                 </div>

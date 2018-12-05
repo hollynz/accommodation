@@ -39,7 +39,6 @@
                 float: left;
                 display: flex;
                 flex-direction: column;
-                // max-width: 70%;
                 width: 15vw;
                 margin: 0 10%;
             }
@@ -76,12 +75,29 @@
             .who-input {
                 width: 15vw;
                 left: 800px;
-                justify-content: space-around;
-                .column {
-                    align-content: space-between;
+                justify-content: center;
+                .columns {
+                    height: 100%;
+                    .column {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-evenly;
+                    }
                 }
                 .button {
                     width: 100%;
+                    font-size: 1.2em;
+                }
+            }
+            .what-input {
+                left: 1200px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                .button {
+                    width: 100%;
+                    font-size: 1.5em;
+                    text-align: left;
                 }
             }
         }

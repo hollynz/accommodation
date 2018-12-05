@@ -7,7 +7,8 @@ let datepickerInputEl = $('[data-toggle="datepicker"]'),
     finishButtonEl = $('#finishButton'),
     whenInputEl = $('#whenInput'),
     whereInputEl = $('#whereInput'),
-    whoInputEl = $('#whoInput');
+    whoInputEl = $('#whoInput'),
+    whatInputEl = $('#whatInput');
 
 // Data
 let accommData, mealData,
@@ -51,6 +52,7 @@ function slideInputContainerForwards() {
     whenInputEl.animate({ left: '-=400px' });
     whereInputEl.animate({ left: '-=400px' });
     whoInputEl.animate({ left: '-=400px' });
+    whatInputEl.animate({ left: '-=400px' });
 };
 
 function slideInputContainerBackwards() {
@@ -61,6 +63,7 @@ function slideInputContainerBackwards() {
     whenInputEl.animate({ left: '+=400px' });
     whereInputEl.animate({ left: '+=400px' });
     whoInputEl.animate({ left: '+=400px' });
+    whatInputEl.animate({ left: '+=400px' });
 };
 
 function checkInputIsStart() {
