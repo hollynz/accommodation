@@ -1,23 +1,22 @@
 html, body {
     height: 100%;
     overflow: auto;
-
-    .container {
-        width: $width-80;
-    }
+    position: relative;
 
     .background-level {
-        height: $height-60;
-        // background: $black-transp;
+        // height: $height-60;
         margin: $height-15 auto;
+        margin-top: 0;
         width: $full;
     }
 
     /* screens */
     .content {
+        margin-top: 10%;
         padding-bottom: 100px;
         .screen {
             display: none;
+            margin-top: 2%;
         }
         .screen.active {
             display: block;

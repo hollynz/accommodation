@@ -1,0 +1,23 @@
+{
+  "name": "accommodation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "jquery": "^3.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hollynz/accommodation.git"
+  },
+  "author": "Holly Johnson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hollynz/accommodation/issues"
+  },
+  "homepage": "https://github.com/hollynz/accommodation#readme"
+}

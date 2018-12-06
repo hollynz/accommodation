@@ -1,5 +1,7 @@
 // DOM Elements
-let datepickerInputEl = $('[data-toggle="datepicker"]'),
+let bodyEl = $('body'),
+    navbarEl = $('#navbar'),
+    datepickerInputEl = $('[data-toggle="datepicker"]'),
     inputContainerEl = $('#inputContainer'),
     userInputScreenEl = $('#userInputScreen'),
     accommSummaryScreenEl = $('#accommSummaryScreen'),
@@ -10,7 +12,11 @@ let datepickerInputEl = $('[data-toggle="datepicker"]'),
     whenInputEl = $('#whenInput'),
     whereInputEl = $('#whereInput'),
     whoInputEl = $('#whoInput'),
-    whatInputEl = $('#whatInput');
+    noOfGuestsEl = $('#noOfGuests'),
+    moreGuestsEl = $('#moreGuests'),
+    fewerGuestsEl = $('#fewerGuests'),
+    whatInputEl = $('#whatInput'),
+    backToFormBtnEl = $('#backToFormBtn');
 
 // Data
 let accommData, mealData,
@@ -46,7 +52,11 @@ function init() {
     checkInputIsEnd();
     rightArrowEl.on('click', slideInputContainerForwards);
     leftArrowEl.on('click', slideInputContainerBackwards);
+    moreGuestsEl.on('click', increaseNoOfGuests);
+    fewerGuestsEl.on('click', decreaseNoOfGuests);
+    noOfGuestsEl.on('blur', checkWhoInput);
     finishButtonEl.on('click', showSummary);
+    backToFormBtnEl.on('click', backToForm);
 };
 
 function slideInputContainerForwards() {
@@ -127,9 +137,39 @@ function setUpMap() {
     // map.addControl(searchControl);
 };
 
+function increaseNoOfGuests() {
+    noOfGuestsEl.val(function (i, prev) {
+        return ++prev;
+    });
+}
+
+function decreaseNoOfGuests() {
+    if (!(noOfGuestsEl.val() == 0)) {
+        noOfGuestsEl.val(function (i, prev) {
+            return --prev;
+        });
+    }
+}
+
+function checkWhoInput() {
+    let guests = noOfGuestsEl.val();
+    if (guests < 0 || !(Math.floor(guests) == guests && $.isNumeric(guests))) {
+        noOfGuestsEl.val('0');
+    };
+}
+
 function showSummary() {
     userInputScreenEl.removeClass('active');
     accommSummaryScreenEl.addClass('active');
+    bodyEl.css('background-image', 'url(../../img/aspiring2.JPG)');
+    navbarEl.css('visibility', 'visible');
+};
+
+function backToForm() { 
+    userInputScreenEl.addClass('active');
+    accommSummaryScreenEl.removeClass('active');
+    bodyEl.css('background-image', 'url(../../img/sunrise2.JPG)');
+    navbarEl.css('visibility', 'hidden');
 };
 
 init();

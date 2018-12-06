@@ -1,4 +1,22 @@
 .navbar {
+    visibility: hidden;
+    position: fixed;
+    margin: auto 0;
+    width: 100%;
     background: none;
     padding: 1%;
+    .navbar-brand {
+        .fas {
+            font-size: 3em;
+            color: $brand-yellow;
+        }
+        .fas:hover {
+            cursor: pointer;
+        }
+    }
+    .navbar-end {
+        .button {
+            background: $brand-yellow;
+        }
+    }
 }
