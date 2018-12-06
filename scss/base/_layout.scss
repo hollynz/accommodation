@@ -14,11 +14,14 @@ html, body {
     }
 
     /* screens */
-    .content .screen {
-        display: none;
-    }
-    .screen.active {
-        display: block;
+    .content {
+        padding-bottom: 100px;
+        .screen {
+            display: none;
+        }
+        .screen.active {
+            display: block;
+        }
     }
 }
 

@@ -1,6 +1,8 @@
 // DOM Elements
 let datepickerInputEl = $('[data-toggle="datepicker"]'),
     inputContainerEl = $('#inputContainer'),
+    userInputScreenEl = $('#userInputScreen'),
+    accommSummaryScreenEl = $('#accommSummaryScreen'),
     inputTitleEl = $('#inputTitle'),
     leftArrowEl = $('#leftArrow'),
     rightArrowEl = $('#rightArrow'),
@@ -42,6 +44,7 @@ function init() {
     checkInputIsEnd();
     rightArrowEl.on('click', slideInputContainerForwards);
     leftArrowEl.on('click', slideInputContainerBackwards);
+    finishButtonEl.on('click', showSummary);
 };
 
 function slideInputContainerForwards() {
@@ -76,10 +79,9 @@ function checkInputIsStart() {
 };
 
 function checkInputIsEnd() {
-    if(currInputScreen == 3) {
+    if (currInputScreen == 3) {
         finishButtonEl.css('display', 'block');
         rightArrowEl.css('display', 'none');
-        finishButtonEl.on('click', showSummary);
     } else {
         finishButtonEl.css('display', 'none');
         rightArrowEl.css('display', 'block');
@@ -96,7 +98,8 @@ function setUpMap() {
 };
 
 function showSummary() {
-    alert("done");
+    userInputScreenEl.removeClass('active');
+    accommSummaryScreenEl.addClass('active');
 };
 
 init();
