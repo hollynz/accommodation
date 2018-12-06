@@ -18,8 +18,9 @@ let accommData, mealData,
 
 // Misc variables
 let currDate = Date.now(),
-    currInputScreen = 0,
-    map = L.map('map').setView([-40.9, 173], 4);
+    currInputScreen = 0;
+
+
 
 function init() {
     $.getJSON('json/accommodation.json', function (options) {
@@ -40,6 +41,7 @@ function init() {
     // Set up map
     setUpMap();
 
+    
     checkInputIsStart();
     checkInputIsEnd();
     rightArrowEl.on('click', slideInputContainerForwards);
@@ -89,12 +91,40 @@ function checkInputIsEnd() {
 };
 
 function setUpMap() {
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    // Map variables
+    var GeoSearchControl = window.GeoSearch.GeoSearchControl,
+        OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider,
+        provider = new OpenStreetMapProvider();
+    
+        var baseMap = new L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         // maxZoom: 18,
         id: 'mapbox.streets',
         accessToken: 'pk.eyJ1IjoiaG9sbHlqbnoiLCJhIjoiY2pvbnBuc2ZhMWVkYzNqcGNvNnBjeDI2aiJ9.esIDISrS1QjPynfQs4sKKA'
-    }).addTo(map);
+    });
+    // var baseMapIndex = {
+    //     "Map": baseMap
+    // };
+    var map = L.map('map', {
+        center: [-40.9, 173],
+        zoom: 4,
+        layers: baseMap
+    });
+    // var control = L.control.layers(baseMapIndex);
+    var searchControl = new GeoSearchControl({
+        provider: provider,
+    });
+    // control.addTo(map);
+    searchControl.addTo(map);
+
+    var htmlObject = searchControl.getContainer();
+    function setParent(el, newParent) {
+        newParent.append(el);
+    }
+    setParent(htmlObject, inputContainerEl);
+    
+    // L.control.layers(baseMap, searchControl).addTo(map);
+    // map.addControl(searchControl);
 };
 
 function showSummary() {
