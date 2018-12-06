@@ -74,7 +74,7 @@ body {
           justify-content: space-between;
 }
 
-.form-container .logo {
+.form-container .form-container-top .logo {
   margin-bottom: 12%;
   width: 90%;
   -ms-flex-item-align: center;
@@ -229,6 +229,5 @@ body {
 
 .form-container .input-nav .fa-check-circle {
   display: none;
-  z-index: 0;
 }
 /*# sourceMappingURL=main.css.map */

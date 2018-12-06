@@ -9,16 +9,15 @@
     flex-direction: column;
     justify-content: space-evenly;
     .form-container-top {
-        // width: 90%;
         align-self: center;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-    }
-    .logo {
-        margin-bottom: 12%;
-        width: 90%;
-        align-self: center;
+        .logo {
+            margin-bottom: 12%;
+            width: 90%;
+            align-self: center;
+        }
     }
     
     form {
@@ -116,7 +115,6 @@
         }
         .fa-check-circle {
             display: none;
-            z-index: 0;
         }
     }
 }
