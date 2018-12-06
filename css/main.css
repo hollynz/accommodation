@@ -1,3 +1,10 @@
+.content .blurb {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #ffd83e;
+  text-align: center;
+  font-size: 2.8em;
+}
+
 h2.title {
   color: #fff;
   font-size: 2em;
@@ -6,25 +13,24 @@ h2.title {
 html, body {
   height: 100%;
   overflow: auto;
+  position: relative;
   /* screens */
 }
 
-html .container, body .container {
-  width: 80vw;
-}
-
 html .background-level, body .background-level {
-  height: 60vh;
   margin: 15vh auto;
+  margin-top: 0;
   width: 100%;
 }
 
 html .content, body .content {
+  margin-top: 10%;
   padding-bottom: 100px;
 }
 
 html .content .screen, body .content .screen {
   display: none;
+  margin-top: 2%;
 }
 
 html .content .screen.active, body .content .screen.active {
@@ -36,8 +42,25 @@ body {
 }
 
 .navbar {
+  visibility: hidden;
+  position: fixed;
+  margin: auto 0;
+  width: 100%;
   background: none;
   padding: 1%;
+}
+
+.navbar .navbar-brand .fas {
+  font-size: 3em;
+  color: #ffd83e;
+}
+
+.navbar .navbar-brand .fas:hover {
+  cursor: pointer;
+}
+
+.navbar .navbar-end .button {
+  background: #ffd83e;
 }
 
 .form-container {
@@ -45,7 +68,7 @@ body {
   margin: auto;
   width: 25vw;
   border-radius: 10px;
-  padding: 3%;
+  padding: 2.5%;
   color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -69,22 +92,26 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
-.form-container .form-container-top .logo {
-  margin-bottom: 12%;
+.form-container .form-container-top .logo, .form-container .form-container-top hr {
   width: 90%;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
 }
 
+.form-container .form-container-top .logo {
+  margin-bottom: 8%;
+}
+
+.form-container .form-container-top hr {
+  margin-bottom: 3%;
+}
+
 .form-container form {
-  margin-top: 2vh;
-  height: 25vh;
+  margin-top: 3%;
+  height: 22vh;
   overflow: hidden;
 }
 
@@ -117,13 +144,19 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 15vw;
-  margin: 0 10%;
+  margin: 0 12%;
 }
 
 .form-container form .input-container .input {
   width: 15vw;
   margin: 2% auto;
   font-size: 1.6em;
+}
+
+.form-container form .input-container input[type=number]::-webkit-inner-spin-button,
+.form-container form .input-container input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .form-container form .input-container .input:hover {
@@ -143,8 +176,8 @@ body {
 }
 
 .form-container form .input-container .where-input .input {
-  max-width: 19vw;
-  width: 19vw;
+  max-width: 20vw;
+  width: 20vw;
 }
 
 .form-container form .input-container .where-input .icon {
@@ -153,7 +186,7 @@ body {
 }
 
 .form-container form .input-container .where-input .map {
-  width: 19vw;
+  width: 20vw;
   height: 100%;
   border-radius: 4px;
 }
@@ -161,31 +194,28 @@ body {
 .form-container form .input-container .who-input {
   width: 15vw;
   left: 800px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
-.form-container form .input-container .who-input .columns {
-  height: 100%;
-}
-
-.form-container form .input-container .who-input .columns .column {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+.form-container form .input-container .who-input .input {
+  text-align: center;
+  width: 4em;
+  font-size: 1.2em;
 }
 
 .form-container form .input-container .who-input .button {
-  width: 100%;
-  font-size: 1.2em;
+  height: 1em;
+  width: auto;
+  padding: 0;
+  font-size: 3em;
+  border: none;
+  background: none;
+}
+
+.form-container form .input-container .who-input .button .fas {
+  color: #ffd83e;
 }
 
 .form-container form .input-container .what-input {
@@ -205,6 +235,31 @@ body {
   width: 100%;
   font-size: 1.5em;
   text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  position: relative;
+}
+
+.form-container form .input-container .what-input .button .fas {
+  margin-right: 8%;
+}
+
+.form-container form .input-container .what-input .button span {
+  position: absolute;
+  left: 25%;
+}
+
+.form-container form .input-container .what-input .button .far {
+  text-align: right;
+  color: #ffd83e;
 }
 
 .form-container .input-nav {
@@ -218,7 +273,7 @@ body {
 }
 
 .form-container .input-nav .fa-chevron-circle-right, .form-container .input-nav .fa-chevron-circle-left, .form-container .input-nav .fa-check-circle {
-  color: yellow;
+  color: #ffd83e;
   text-align: right;
   font-size: 2.6em;
 }
@@ -229,5 +284,9 @@ body {
 
 .form-container .input-nav .fa-check-circle {
   display: none;
+}
+
+.form-container .input-nav i:hover {
+  color: #fff;
 }
 /*# sourceMappingURL=main.css.map */
