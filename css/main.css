@@ -249,7 +249,7 @@ body {
 }
 
 .form-container form .input-container .where-input .leaflet-control-geosearch form .glass {
-  margin-top: 0.5em;
+  padding: 1.25em 0;
 }
 
 .form-container form .input-container .where-input .leaflet-control-geosearch .fas {
@@ -257,12 +257,13 @@ body {
 }
 
 .form-container form .input-container .where-input .leaflet-control-geosearch .results {
+  padding-bottom: 5em;
   color: black;
   font-size: 0.6em;
 }
 
 .form-container form .input-container .where-input .leaflet-control-geosearch .results > * {
-  line-height: 1em;
+  line-height: 1.4em;
   white-space: normal;
 }
 

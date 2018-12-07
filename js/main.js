@@ -130,19 +130,35 @@ function setUpMap() {
     var leafletBarPartEl = $('.leaflet-bar-part'),
     geosearchFormEl = $('.geosearch form'),
     geosearchResetEl = $('.geosearch .reset'),
-    geosearchGlassEl = $('.geosearch .glass');
+    geosearchGlassEl = $('.geosearch .glass'),
+    geosearchGlassContentEl = $('.geosearch .glass div'),
+    geosearchResultsEl = $('.geosearch .results');
 
     // Deal with html/styling
     leafletBarPartEl.html('<i class="fas fa-search"></i>');
     geosearchResetEl.html('<i class="fas fa-redo-alt"></i>');
     geosearchGlassEl.attr("placeholder", "Enter town/city");
-    geosearchFormEl.on('keyup', function () {
+
+    // Deal with user input/selection
+    geosearchGlassEl.on('click', function () {
         geosearchFormEl.css('height', '25vh').css('overflow-y', 'scroll');
+        geosearchResultsEl.css('display', 'block');
+    });
+    geosearchResetEl.on('click', resetForm);
+
+    geosearchResultsEl.on('click', function() {
+        geosearchResultsEl.removeClass('active');
+        geosearchResultsEl.css('display', 'none');
+        geosearchFormEl.removeClass('active');
+        resetForm();
     });
     geosearchFormEl.on('blur', function () {
-        console.log('blurry');
-        geosearchFormEl.css('height', '2vh');
+        geosearchGlassContentEl.on('blur', resetForm);
     });
+
+    function resetForm () {
+        geosearchFormEl.css('height', '2em').css('overflow-y', 'hidden');
+    };
 };
 
 function increaseNoOfGuests() {
