@@ -12,7 +12,7 @@ h2.title {
 
 html, body {
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
   position: relative;
   margin: 0;
   /* screens */
@@ -246,10 +246,12 @@ body {
 
 .form-container form .input-container .where-input .leaflet-control-geosearch form input {
   font-size: 0.8em;
+  color: rgba(54, 54, 54, 0.3) !important;
 }
 
 .form-container form .input-container .where-input .leaflet-control-geosearch form .glass {
   padding: 1.25em 0;
+  color: rgba(54, 54, 54, 0.3);
 }
 
 .form-container form .input-container .where-input .leaflet-control-geosearch .fas {

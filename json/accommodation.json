@@ -7,63 +7,22 @@
             "name": "Kiwi Backpackers",
             "unitPrice": 30,
             "mealsAvailable": [0, 1, 2],
-<<<<<<< HEAD
             "imgSrc": "../img/accom/hostel.jpeg",
             "location": "Wellington",
             "maxGuests": 1,
             "maxNights": 10
-=======
-            "mealsIncluded": [],
-            "imgSrc": "",
-            "location": "Wellington",
-            "maxGuests": 0
->>>>>>> ddb8875cd1c224e400f451d78386016c3a737d51
         },
         {
             "id": 1,
             "category": 0,
             "type": "Hostel",
             "name": "Christchurch Backpackers",
-<<<<<<< HEAD
             "unitPrice": 30,
             "mealsAvailable": [0, 1, 2],
             "imgSrc": "../img/accom/hostel.jpeg",
             "location": "Christchurch",
             "maxGuests": 1,
             "maxNights": 10
-=======
-            "unitCapacity": 1,
-            "unitPrice": 30,
-            "mealsAvailable": [0, 1, 2],
-            "mealsIncluded": [],
-            "imgSrc": "",
-            "location": "Christchurch",
-            "maxGuests": 0
-        },
-        {
-            "id": 2,
-            "type": 0,
-            "name": "Kiwi Backpackers",
-            "unitCapacity": 1,
-            "unitPrice": 30,
-            "mealsAvailable": [0, 1, 2],
-            "mealsIncluded": [],
-            "imgSrc": "",
-            "location": "Auckland",
-            "maxGuests": 0
-        },
-        {
-            "id": 3,
-            "type": 0,
-            "name": "Mt Cook Hostel",
-            "unitCapacity": 1,
-            "unitPrice": 30,
-            "mealsAvailable": [0, 1, 2],
-            "mealsIncluded": [],
-            "imgSrc": "",
-            "location": "Mt Cook",
-            "maxGuests": 0
->>>>>>> ddb8875cd1c224e400f451d78386016c3a737d51
         },
         {
             "id": 4,
@@ -72,17 +31,10 @@
             "name": "Christchurch Motel",
             "unitPrice": 30,
             "mealsAvailable": [0, 1, 2],
-<<<<<<< HEAD
             "imgSrc": "../img/accom/motel.jpeg",
             "location": "Christchurch",
             "maxGuests": 4,
             "maxNights": 10
-=======
-            "mealsIncluded": [],
-            "imgSrc": "",
-            "location": "Christchurch",
-            "maxGuests": 0
->>>>>>> ddb8875cd1c224e400f451d78386016c3a737d51
         },
         {
             "id": 5,
@@ -91,17 +43,10 @@
             "name": "Greymouth Motel",
             "unitPrice": 30,
             "mealsAvailable": [0, 1, 2],
-<<<<<<< HEAD
             "imgSrc": "../img/accom/motel.jpeg",
             "location": "Nelson",
             "maxGuests": 4,
             "maxNights": 10
-=======
-            "mealsIncluded": [],
-            "imgSrc": "",
-            "location": "Nelson",
-            "maxGuests": 0
->>>>>>> ddb8875cd1c224e400f451d78386016c3a737d51
         },
         {
             "id": 6,
@@ -110,17 +55,10 @@
             "name": "Christchurch Hotel",
             "unitPrice": 90,
             "mealsAvailable": [],
-<<<<<<< HEAD
             "imgSrc": "../img/accom/hotel.jpeg",
             "location": "Christchurch",
             "maxGuests": 2,
             "maxNights": 5
-=======
-            "mealsIncluded": [],
-            "imgSrc": "",
-            "location": "Christchurch",
-            "maxGuests": 0
->>>>>>> ddb8875cd1c224e400f451d78386016c3a737d51
         },
         {
             "id": 7,
@@ -129,17 +67,10 @@
             "name": "Auckland Hotel",
             "unitPrice": 157,
             "mealsAvailable": [0, 1, 2],
-<<<<<<< HEAD
             "imgSrc": "../img/accom/hotel.jpeg",
             "location": "Auckland",
             "maxGuests": 2,
             "maxNights": 5
-=======
-            "mealsIncluded": [0],
-            "imgSrc": "",
-            "location": "Nelson",
-            "maxGuests": 0
->>>>>>> ddb8875cd1c224e400f451d78386016c3a737d51
         },
         {
             "id": 8,
@@ -148,17 +79,10 @@
             "name": "Christchurch House",
             "unitPrice": 240,
             "mealsAvailable": [0, 2],
-<<<<<<< HEAD
             "imgSrc": "../img/accom/house.jpeg",
             "location": "Christchurch",
             "maxGuests": 4,
             "maxNights": 15
-=======
-            "mealsIncluded": [0, 2],
-            "imgSrc": "",
-            "location": "Christchurch",
-            "maxGuests": 0
->>>>>>> ddb8875cd1c224e400f451d78386016c3a737d51
         },
         {
             "id": 9,
@@ -166,7 +90,6 @@
             "name": "Wellington House",
             "unitPrice": 240,
             "mealsAvailable": [0, 2],
-<<<<<<< HEAD
             "imgSrc": "../img/accom/house.jpeg",
             "location": "Wellington",
             "maxGuests": 4,
@@ -183,24 +106,6 @@
             "location": "Auckland",
             "maxGuests": 4,
             "maxNights": 15
-=======
-            "mealsIncluded": [0, 2],
-            "imgSrc": "",
-            "location": "Wellington",
-            "maxGuests": 0
-        },
-        {
-            "id": 10,
-            "type": 3,
-            "name": "Auckland House",
-            "unitCapacity": 4,
-            "unitPrice": 240,
-            "mealsAvailable": [0, 2],
-            "mealsIncluded": [0, 2],
-            "imgSrc": "",
-            "location": "Auckland",
-            "maxGuests": 0
->>>>>>> ddb8875cd1c224e400f451d78386016c3a737d51
         }
     ]
 }
