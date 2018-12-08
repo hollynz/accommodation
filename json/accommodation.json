@@ -2,113 +2,110 @@
     "accommodation": [
         {
             "id": 0,
-            "type": 0,
-            "name": "Kiwi Hostel",
-            "unitCapacity": 1,
+            "category": 0,
+            "type": "Hostel",
+            "name": "Kiwi Backpackers",
             "unitPrice": 30,
             "mealsAvailable": [0, 1, 2],
-            "mealsIncluded": [],
-            "imgSrc": ""
+            "imgSrc": "../img/accom/hostel.jpeg",
+            "location": "Wellington",
+            "maxGuests": 1,
+            "maxNights": 10
         },
         {
             "id": 1,
-            "type": 0,
+            "category": 0,
+            "type": "Hostel",
             "name": "Christchurch Backpackers",
-            "unitCapacity": 1,
             "unitPrice": 30,
             "mealsAvailable": [0, 1, 2],
-            "mealsIncluded": [],
-            "imgSrc": ""
-        },
-        {
-            "id": 2,
-            "type": 0,
-            "name": "Kiwi Backpackers",
-            "unitCapacity": 1,
-            "unitPrice": 30,
-            "mealsAvailable": [0, 1, 2],
-            "mealsIncluded": [],
-            "imgSrc": ""
-        },
-        {
-            "id": 3,
-            "type": 0,
-            "name": "Mt Cook Hostel",
-            "unitCapacity": 1,
-            "unitPrice": 30,
-            "mealsAvailable": [0, 1, 2],
-            "mealsIncluded": [],
-            "imgSrc": ""
+            "imgSrc": "../img/accom/hostel.jpeg",
+            "location": "Christchurch",
+            "maxGuests": 1,
+            "maxNights": 10
         },
         {
             "id": 4,
-            "type": 1,
+            "category": 1,
+            "type": "Motel",
             "name": "Christchurch Motel",
-            "unitCapacity": 1,
             "unitPrice": 30,
             "mealsAvailable": [0, 1, 2],
-            "mealsIncluded": [],
-            "imgSrc": ""
+            "imgSrc": "../img/accom/motel.jpeg",
+            "location": "Christchurch",
+            "maxGuests": 4,
+            "maxNights": 10
         },
         {
             "id": 5,
-            "type": 1,
-            "name": "Nelson Motel",
-            "unitCapacity": 1,
+            "category": 1,
+            "type": "Motel",
+            "name": "Greymouth Motel",
             "unitPrice": 30,
             "mealsAvailable": [0, 1, 2],
-            "mealsIncluded": [],
-            "imgSrc": ""
+            "imgSrc": "../img/accom/motel.jpeg",
+            "location": "Nelson",
+            "maxGuests": 4,
+            "maxNights": 10
         },
         {
             "id": 6,
-            "type": 2,
+            "category": 2,
+            "type": "Hotel",
             "name": "Christchurch Hotel",
-            "unitCapacity": 4,
             "unitPrice": 90,
             "mealsAvailable": [],
-            "mealsIncluded": [],
-            "imgSrc": ""
+            "imgSrc": "../img/accom/hotel.jpeg",
+            "location": "Christchurch",
+            "maxGuests": 2,
+            "maxNights": 5
         },
         {
             "id": 7,
-            "type": 2,
-            "name": "Nelson Hotel",
-            "unitCapacity": 2,
+            "category": 2,
+            "type": "Hotel",
+            "name": "Auckland Hotel",
             "unitPrice": 157,
             "mealsAvailable": [0, 1, 2],
-            "mealsIncluded": [0],
-            "imgSrc": ""
+            "imgSrc": "../img/accom/hotel.jpeg",
+            "location": "Auckland",
+            "maxGuests": 2,
+            "maxNights": 5
         },
         {
             "id": 8,
-            "type": 3,
+            "category": 3,
+            "type": "House",
             "name": "Christchurch House",
-            "unitCapacity": 4,
             "unitPrice": 240,
             "mealsAvailable": [0, 2],
-            "mealsIncluded": [0, 2],
-            "imgSrc": ""
+            "imgSrc": "../img/accom/house.jpeg",
+            "location": "Christchurch",
+            "maxGuests": 4,
+            "maxNights": 15
         },
         {
             "id": 9,
-            "type": 3,
+            "category": 3,
             "name": "Wellington House",
-            "unitCapacity": 4,
             "unitPrice": 240,
             "mealsAvailable": [0, 2],
-            "mealsIncluded": [0, 2],
-            "imgSrc": ""
+            "imgSrc": "../img/accom/house.jpeg",
+            "location": "Wellington",
+            "maxGuests": 4,
+            "maxNights": 15
         },
         {
             "id": 10,
-            "type": 3,
-            "name": "Wellington House",
-            "unitCapacity": 4,
+            "category": 3,
+            "type": "House",
+            "name": "Tauranga House",
             "unitPrice": 240,
             "mealsAvailable": [0, 2],
-            "mealsIncluded": [0, 2],
-            "imgSrc": ""
+            "imgSrc": "../img/accom/house.jpeg",
+            "location": "Auckland",
+            "maxGuests": 4,
+            "maxNights": 15
         }
     ]
 }

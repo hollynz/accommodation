@@ -2,6 +2,8 @@
 let bodyEl = $('body'),
     navbarEl = $('#navbar'),
     datepickerInputEl = $('[data-toggle="datepicker"]'),
+    dateFromEl = $('#dateFrom'),
+    dateToEl = $('#dateTo'),
     inputContainerEl = $('#inputContainer'),
     userInputScreenEl = $('#userInputScreen'),
     accommSummaryScreenEl = $('#accommSummaryScreen'),
@@ -20,7 +22,8 @@ let bodyEl = $('body'),
 
 // Data
 let accommData, mealData,
-    inputTitles = ["WHEN?", "WHERE?", "WHO?", "WHAT?"];
+    inputTitles = ["WHEN?", "WHERE?", "WHO?", "WHAT?"],
+    selectedLocation;
 
 // Misc variables
 let currDate = Date.now(),
@@ -30,24 +33,20 @@ let currDate = Date.now(),
 
 function init() {
     $.getJSON('json/accommodation.json', function (options) {
-        accommData = options;
+        accommData = options.accommodation;
     });
     $.getJSON('json/meals.json', function (options) {
-        mealData = options;
+        mealData = options.meals;
     });
 
-    // Datepicker
+    // Datepicker: FIX the past date issue!!!
     datepickerInputEl.datepicker({
-        // FIX this!!
         isDisabled: function (date) {
             return date.valueOf() < currDate ? true : false;
         }
     });
 
-    // Set up map
     setUpMap();
-
-    
     checkInputIsStart();
     checkInputIsEnd();
     rightArrowEl.on('click', slideInputContainerForwards);
@@ -57,6 +56,9 @@ function init() {
     noOfGuestsEl.on('blur', checkWhoInput);
     finishButtonEl.on('click', showSummary);
     backToFormBtnEl.on('click', backToForm);
+    $('.geosearch .results').on('click', function (e) {
+        selectedLocation = $(e.target).text();
+    });
 };
 
 function slideInputContainerForwards() {
@@ -91,7 +93,7 @@ function checkInputIsStart() {
 };
 
 function checkInputIsEnd() {
-    if (currInputScreen == 3) {
+    if (currInputScreen == 2) {
         finishButtonEl.css('display', 'block');
         rightArrowEl.css('display', 'none');
     } else {
@@ -112,29 +114,55 @@ function setUpMap() {
         id: 'mapbox.streets',
         accessToken: 'pk.eyJ1IjoiaG9sbHlqbnoiLCJhIjoiY2pvbnBuc2ZhMWVkYzNqcGNvNnBjeDI2aiJ9.esIDISrS1QjPynfQs4sKKA'
     });
-    // var baseMapIndex = {
-    //     "Map": baseMap
-    // };
     var map = L.map('map', {
         center: [-40.9, 173],
         zoom: 4,
         layers: baseMap
     });
-    // var control = L.control.layers(baseMapIndex);
     var searchControl = new GeoSearchControl({
         provider: provider,
     });
-    // control.addTo(map);
     searchControl.addTo(map);
 
     var htmlObject = searchControl.getContainer();
     function setParent(el, newParent) {
         newParent.append(el);
     }
-    setParent(htmlObject, inputContainerEl);
-    
-    // L.control.layers(baseMap, searchControl).addTo(map);
-    // map.addControl(searchControl);
+    setParent(htmlObject, whereInputEl);
+
+    // Geosearch input
+    var leafletBarPartEl = $('.leaflet-bar-part'),
+    geosearchFormEl = $('.geosearch form'),
+    geosearchResetEl = $('.geosearch .reset'),
+    geosearchGlassEl = $('.geosearch .glass'),
+    geosearchGlassContentEl = $('.geosearch .glass div'),
+    geosearchResultsEl = $('.geosearch .results');
+
+    // Deal with html/styling
+    leafletBarPartEl.html('<i class="fas fa-search"></i>');
+    geosearchResetEl.html('<i class="fas fa-redo-alt"></i>');
+    geosearchGlassEl.attr("placeholder", "Enter town/city");
+
+    // Deal with user input/selection
+    geosearchGlassEl.on('click', function () {
+        geosearchFormEl.css('height', '25vh').css('overflow-y', 'scroll');
+        geosearchResultsEl.css('display', 'block');
+    });
+    geosearchResetEl.on('click', resetForm);
+
+    geosearchResultsEl.on('click', function() {
+        geosearchResultsEl.removeClass('active');
+        geosearchResultsEl.css('display', 'none');
+        geosearchFormEl.removeClass('active');
+        resetForm();
+    });
+    geosearchFormEl.on('blur', function () {
+        geosearchGlassContentEl.on('blur', resetForm);
+    });
+
+    function resetForm () {
+        geosearchFormEl.css('height', '2em').css('overflow-y', 'hidden');
+    };
 };
 
 function increaseNoOfGuests() {
@@ -159,10 +187,12 @@ function checkWhoInput() {
 }
 
 function showSummary() {
+    let filteredAccommodation = filterByUserInput();
     userInputScreenEl.removeClass('active');
     accommSummaryScreenEl.addClass('active');
     bodyEl.css('background-image', 'url(../../img/aspiring2.JPG)');
     navbarEl.css('visibility', 'visible');
+    setUpGrid(filteredAccommodation);
 };
 
 function backToForm() { 
@@ -170,6 +200,38 @@ function backToForm() {
     accommSummaryScreenEl.removeClass('active');
     bodyEl.css('background-image', 'url(../../img/sunrise2.JPG)');
     navbarEl.css('visibility', 'hidden');
+};
+
+function filterByUserInput () {
+    var filteredAccommodation;
+    var days = calcDays();
+    var guests = noOfGuestsEl.val();
+    var location = selectedLocation.split(/[ ,]+/)[0];
+    filteredAccommodation = accommData.filter(function (option) {
+        return days <= option.maxNights && guests <= option.maxGuests && location == option.location;
+    });
+    return filteredAccommodation;
+};
+
+function calcDays () {
+    var dates = [dateFromEl.val().split('/'), dateToEl.val().split('/')];
+    var t1 = new Date((dates[0])[2], (dates[0])[0], (dates[0])[1]).getTime();
+    var t2 = new Date((dates[1])[2], (dates[1])[0], (dates[1])[1]).getTime();
+    var difference = t2 - t1;
+    var days = Math.floor(difference/(1000*60*60*24));
+    return days;
+};
+
+function setUpGrid(filteredAccommodation) {
+    let htmlString = '';
+    $.each(filteredAccommodation, function(i, option) {
+        htmlString += getAccommodationSummaryHTML(option);
+    });
+    accommSummaryScreenEl.html(htmlString);
+};
+
+function getAccommodationSummaryHTML(option) {
+    return `<div><img src="${option.imgSrc}"></div>`;
 };
 
 init();

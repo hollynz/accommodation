@@ -1,7 +1,8 @@
 html, body {
     height: 100%;
-    overflow: auto;
+    overflow: hidden;
     position: relative;
+    margin: 0;
 
     .background-level {
         // height: $height-60;
