@@ -118,11 +118,21 @@
                         // position: relative;
                         input {
                             font-size: 0.8em;
+<<<<<<< HEAD
                             color: $placeholder-color !important;
                         }
                         .glass {
                             padding: 1.25em 0;
                             color: $placeholder-color;
+=======
+                            // padding-top: 1%;
+                            // padding-bottom: 1%;
+                            // margin-bottom: 1.8em;
+                        }
+                        .glass {
+                            padding: 1.25em 0;
+                            // position: fixed;
+>>>>>>> ddb8875cd1c224e400f451d78386016c3a737d51
                         }
                     }
                     .fas {

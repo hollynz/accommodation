@@ -54,7 +54,7 @@ function init() {
     moreGuestsEl.on('click', increaseNoOfGuests);
     fewerGuestsEl.on('click', decreaseNoOfGuests);
     noOfGuestsEl.on('blur', checkWhoInput);
-    finishButtonEl.on('click', showSummary);
+    finishButtonEl.on('click', filterByUserInput).on('click', showSummary);
     backToFormBtnEl.on('click', backToForm);
     $('.geosearch .results').on('click', function (e) {
         selectedLocation = $(e.target).text();
@@ -203,6 +203,7 @@ function backToForm() {
 };
 
 function filterByUserInput () {
+<<<<<<< HEAD
     var filteredAccommodation;
     var days = calcDays();
     var guests = noOfGuestsEl.val();
@@ -212,6 +213,16 @@ function filterByUserInput () {
     });
     return filteredAccommodation;
 };
+=======
+    var days = calcDays();
+    var guests = noOfGuestsEl.val();
+    var geosearchGlassInputEl = $('.geosearch .glass:last-child');
+    // console.log(typeof geosearchGlassInputEl);
+    console.log(geosearchGlassInputEl);
+    var location = geosearchGlassInputEl.html();
+    console.log('days: ' + days + ' ' + 'guests: ' + guests + ' ' + 'location: ' + location);
+}
+>>>>>>> ddb8875cd1c224e400f451d78386016c3a737d51
 
 function calcDays () {
     var dates = [dateFromEl.val().split('/'), dateToEl.val().split('/')];
@@ -219,6 +230,7 @@ function calcDays () {
     var t2 = new Date((dates[1])[2], (dates[1])[0], (dates[1])[1]).getTime();
     var difference = t2 - t1;
     var days = Math.floor(difference/(1000*60*60*24));
+<<<<<<< HEAD
     return days;
 };
 
@@ -233,5 +245,10 @@ function setUpGrid(filteredAccommodation) {
 function getAccommodationSummaryHTML(option) {
     return `<div><img src="${option.imgSrc}"></div>`;
 };
+=======
+    console.log(days);
+    return days;
+}
+>>>>>>> ddb8875cd1c224e400f451d78386016c3a737d51
 
 init();

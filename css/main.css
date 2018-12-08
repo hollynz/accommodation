@@ -14,6 +14,7 @@ html, body {
   height: 100%;
   overflow: auto;
   position: relative;
+  margin: 0;
   /* screens */
 }
 
@@ -110,7 +111,7 @@ body {
 }
 
 .form-container form {
-  margin-top: 3%;
+  margin-top: 1%;
   height: 22vh;
   overflow: hidden;
 }
@@ -173,6 +174,7 @@ body {
   left: 400px;
   margin: 0;
   font-size: 1.6em;
+  padding-top: 8%;
 }
 
 .form-container form .input-container .where-input .input {
@@ -191,12 +193,87 @@ body {
   border-radius: 4px;
 }
 
+.form-container form .input-container .where-input .map {
+  display: none;
+}
+
+.form-container form .input-container .where-input .leaflet-control-geosearch {
+  margin-left: 15%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  width: 100%;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.form-container form .input-container .where-input .leaflet-control-geosearch .leaflet-bar-part, .form-container form .input-container .where-input .leaflet-control-geosearch .reset {
+  height: 2em;
+  width: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0;
+}
+
+.form-container form .input-container .where-input .leaflet-control-geosearch .leaflet-bar-part:hover {
+  cursor: auto;
+  background-color: #fff;
+}
+
+.form-container form .input-container .where-input .leaflet-control-geosearch .leaflet-bar-part::before,
+.form-container form .input-container .where-input .leaflet-control-geosearch .leaflet-bar-part::after {
+  display: none;
+}
+
+.form-container form .input-container .where-input .leaflet-control-geosearch form {
+  margin-top: 0.8%;
+  display: block;
+  width: 100%;
+  left: 1.6em;
+  height: 2em;
+  border-radius: 4px;
+  border: none;
+  line-height: 5%;
+  padding-bottom: 2px;
+}
+
+.form-container form .input-container .where-input .leaflet-control-geosearch form input {
+  font-size: 0.8em;
+}
+
+.form-container form .input-container .where-input .leaflet-control-geosearch form .glass {
+  padding: 1.25em 0;
+}
+
+.form-container form .input-container .where-input .leaflet-control-geosearch .fas {
+  color: rgba(54, 54, 54, 0.3);
+}
+
+.form-container form .input-container .where-input .leaflet-control-geosearch .results {
+  padding-bottom: 5em;
+  color: black;
+  font-size: 0.6em;
+}
+
+.form-container form .input-container .where-input .leaflet-control-geosearch .results > * {
+  line-height: 1.4em;
+  white-space: normal;
+}
+
 .form-container form .input-container .who-input {
   width: 15vw;
   left: 800px;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  padding-top: 10%;
 }
 
 .form-container form .input-container .who-input .input {
