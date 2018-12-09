@@ -7,6 +7,7 @@ let bodyEl = $('body'),
     inputContainerEl = $('#inputContainer'),
     userInputScreenEl = $('#userInputScreen'),
     accommSummaryScreenEl = $('#accommSummaryScreen'),
+    accommSummaryScreenContainerEl = $('#accommSummaryScreen .summary-container'),
     inputTitleEl = $('#inputTitle'),
     leftArrowEl = $('#leftArrow'),
     rightArrowEl = $('#rightArrow'),
@@ -29,23 +30,22 @@ let accommData, mealData,
 let currDate = Date.now(),
     currInputScreen = 0;
 
-
-
-function init() {
+/**
+ * Initialise app
+ */
+function init () {
     $.getJSON('json/accommodation.json', function (options) {
         accommData = options.accommodation;
     });
     $.getJSON('json/meals.json', function (options) {
         mealData = options.meals;
     });
-
     // Datepicker: FIX the past date issue!!!
     datepickerInputEl.datepicker({
         isDisabled: function (date) {
             return date.valueOf() < currDate ? true : false;
         }
     });
-
     setUpMap();
     checkInputIsStart();
     checkInputIsEnd();
@@ -61,7 +61,10 @@ function init() {
     });
 };
 
-function slideInputContainerForwards() {
+/**
+ * Slides user input container forwards for each field.
+ */
+function slideInputContainerForwards () {
     currInputScreen++;
     checkInputIsStart();
     checkInputIsEnd();
@@ -72,7 +75,10 @@ function slideInputContainerForwards() {
     whatInputEl.animate({ left: '-=400px' });
 };
 
-function slideInputContainerBackwards() {
+/**
+ * Slides user input container backwards for each field.
+ */
+function slideInputContainerBackwards () {
     currInputScreen--;
     checkInputIsStart();
     checkInputIsEnd();
@@ -83,7 +89,10 @@ function slideInputContainerBackwards() {
     whatInputEl.animate({ left: '+=400px' });
 };
 
-function checkInputIsStart() {
+/**
+ * Checks whether the input form state is the first field.
+ */
+function checkInputIsStart () {
     if (currInputScreen == 0) {
         leftArrowEl.css("visibility", "hidden");
     } else {
@@ -92,7 +101,10 @@ function checkInputIsStart() {
     }
 };
 
-function checkInputIsEnd() {
+/**
+ * Checks whether the input form state is the final field.
+ */
+function checkInputIsEnd () {
     if (currInputScreen == 2) {
         finishButtonEl.css('display', 'block');
         rightArrowEl.css('display', 'none');
@@ -102,15 +114,16 @@ function checkInputIsEnd() {
     }
 };
 
-function setUpMap() {
+/**
+ * Sets up the location (search) functionality.
+ */
+function setUpMap () {
     // Map variables
     var GeoSearchControl = window.GeoSearch.GeoSearchControl,
         OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider,
-        provider = new OpenStreetMapProvider();
-    
-        var baseMap = new L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        provider = new OpenStreetMapProvider(),
+        baseMap = new L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        // maxZoom: 18,
         id: 'mapbox.streets',
         accessToken: 'pk.eyJ1IjoiaG9sbHlqbnoiLCJhIjoiY2pvbnBuc2ZhMWVkYzNqcGNvNnBjeDI2aiJ9.esIDISrS1QjPynfQs4sKKA'
     });
@@ -149,44 +162,54 @@ function setUpMap() {
         geosearchResultsEl.css('display', 'block');
     });
     geosearchResetEl.on('click', resetForm);
-
     geosearchResultsEl.on('click', function() {
         geosearchResultsEl.removeClass('active');
         geosearchResultsEl.css('display', 'none');
         geosearchFormEl.removeClass('active');
         resetForm();
     });
-    geosearchFormEl.on('blur', function () {
-        geosearchGlassContentEl.on('blur', resetForm);
-    });
-
+    // geosearchFormEl.on('blur', function () {
+    //     geosearchGlassContentEl.on('blur', resetForm);
+    // });
     function resetForm () {
         geosearchFormEl.css('height', '2em').css('overflow-y', 'hidden');
     };
 };
 
-function increaseNoOfGuests() {
+/**
+ * Increases the value of number of guests input.
+ */
+function increaseNoOfGuests () {
     noOfGuestsEl.val(function (i, prev) {
         return ++prev;
     });
-}
+};
 
-function decreaseNoOfGuests() {
+/**
+ * Decreases the value of number of guests input.
+ */
+function decreaseNoOfGuests () {
     if (!(noOfGuestsEl.val() == 0)) {
         noOfGuestsEl.val(function (i, prev) {
             return --prev;
         });
     }
-}
+};
 
-function checkWhoInput() {
+/**
+ * Checks whether the number of guests is valid and resets if not.
+ */
+function checkWhoInput () {
     let guests = noOfGuestsEl.val();
     if (guests < 0 || !(Math.floor(guests) == guests && $.isNumeric(guests))) {
         noOfGuestsEl.val('0');
     };
-}
+};
 
-function showSummary() {
+/**
+ * Changes screen to show summary.
+ */
+function showSummary () {
     let filteredAccommodation = filterByUserInput();
     userInputScreenEl.removeClass('active');
     accommSummaryScreenEl.addClass('active');
@@ -195,13 +218,20 @@ function showSummary() {
     setUpGrid(filteredAccommodation);
 };
 
-function backToForm() { 
+/**
+ * Changes screen to return to user input form.
+ */
+function backToForm () { 
     userInputScreenEl.addClass('active');
     accommSummaryScreenEl.removeClass('active');
     bodyEl.css('background-image', 'url(../../img/sunrise2.JPG)');
     navbarEl.css('visibility', 'hidden');
 };
 
+/**
+ * Changes screen to return to user input form.
+ * @returns {Array} filteredAccommodation 
+ */
 function filterByUserInput () {
     var filteredAccommodation;
     var days = calcDays();
@@ -213,6 +243,10 @@ function filterByUserInput () {
     return filteredAccommodation;
 };
 
+/**
+ * Calculates the number of days between user's selected dates.
+ * @returns {number} days 
+ */
 function calcDays () {
     var dates = [dateFromEl.val().split('/'), dateToEl.val().split('/')];
     var t1 = new Date((dates[0])[2], (dates[0])[0], (dates[0])[1]).getTime();
@@ -222,16 +256,33 @@ function calcDays () {
     return days;
 };
 
+/**
+ * Sets up the HTML grid for summary screen.
+ * @param {Array} filteredAccommodation 
+ */
 function setUpGrid(filteredAccommodation) {
     let htmlString = '';
     $.each(filteredAccommodation, function(i, option) {
         htmlString += getAccommodationSummaryHTML(option);
     });
-    accommSummaryScreenEl.html(htmlString);
+    accommSummaryScreenContainerEl.html(htmlString);
 };
 
+/**
+ * Get the summary HTML for the accommodation options.
+ * @param {Object} option
+ * @returns {String} 
+ */
 function getAccommodationSummaryHTML(option) {
-    return `<div><img src="${option.imgSrc}"></div>`;
+    return `<div class="option">
+                <img src="${option.imgSrc}">
+                <h2 class="title">${option.name}</h2>
+                <div class="info">
+                    <h3>Type: ${option.type}</h3>
+                    <h3>Price: $${option.unitPrice}</h3>
+                </div>
+                <button class="button">Book now!</button>
+            </div>`;
 };
 
 init();

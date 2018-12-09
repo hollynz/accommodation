@@ -2,7 +2,7 @@
     background-color: $brand-red;
     margin: auto;
     width: 25vw;
-    border-radius: 10px;
+    border-radius: $border-radius-large;
     padding: 2.5%;
     color: $white;
     display: flex;
@@ -78,7 +78,7 @@
                 .map {
                     width: 20vw;
                     height: 100%;
-                    border-radius: $border-radius;
+                    border-radius: $border-radius-small;
                 }
                 .map {
                     display: none;
@@ -111,7 +111,7 @@
                         width: 100%;
                         left: 1.6em;
                         height: 2em;
-                        border-radius: 4px;
+                        border-radius: $border-radius-small;
                         border: none;
                         line-height: 5%;
                         padding-bottom: 2px;

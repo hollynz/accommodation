@@ -1,0 +1,41 @@
+.accommSummaryScreen {
+    .summary-container {
+        margin: auto;
+        margin-top: 5%;
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-content: space-between;
+        color: $white;
+        .option {
+            width: 35vh;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: $brand-yellow-trans;
+            border-radius: $border-radius-small;
+            padding: 1%;
+            // border: $brand-yellow solid 0.5px;
+            img {
+                max-width: 70%;
+                align-self: center;
+                // outline: $brand-yellow solid 0.5px;
+                // border-radius: $border-radius-small;
+            }
+            .info {
+                width: 70%;
+                justify-content: center;
+            }
+            .button {
+                width: 40%;
+                align-self: flex-end;
+            }
+            .title {
+                color: $white;
+            }
+        }
+    }
+}
