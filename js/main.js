@@ -238,7 +238,7 @@ function showSummary() {
         filteredAccommodation = filterByUserInput();
         userInputScreenEl.removeClass('active');
         accommSummaryScreenEl.addClass('active');
-        bodyEl.css('background-image', 'url(../../img/aspiring2.JPG)');
+        bodyEl.css('background-image', 'url(../../img/beach.JPG)');
         navbarEl.css('visibility', 'visible');
         setUpGrid(filteredAccommodation);
         // Modal
@@ -250,7 +250,6 @@ function showSummary() {
         // modalImg.attr('src', newSrc);
         //     $('.closed').removeClass('closed');
         // });
-
         modalCloseBtnEl.on('click', function () {
             $('.modal-overlay').addClass('closed');
             $('.modal').addClass('closed');

@@ -15,18 +15,17 @@ html, body {
   overflow: auto;
   position: relative;
   margin: 0;
-  /* screens */
-}
-
-html .background-level, body .background-level {
-  margin: 15vh auto;
-  margin-top: 0;
-  width: 100%;
 }
 
 html .content, body .content {
-  margin-top: 12%;
+  margin-top: 9%;
   padding-bottom: 100px;
+}
+
+html .content .background-level, body .content .background-level {
+  margin: 15vh auto;
+  margin-top: 0;
+  width: 100%;
 }
 
 html .content .summary-logo, body .content .summary-logo {
@@ -117,6 +116,7 @@ body {
 }
 
 .form-container .form-container-top .logo {
+  margin-top: 4%;
   margin-bottom: 8%;
 }
 

@@ -7,7 +7,7 @@
             "name": "Kiwi Hostel",
             "unitPrice": 30,
             "mealsAvailable": "Breakfast, lunch, and dinner available",
-            "imgSrc": "../img/accom/hostel.jpeg",
+            "imgSrc": "../img/accom/hostel.jpg",
             "location": "Wellington",
             "maxGuests": 1,
             "maxNights": 10
@@ -19,7 +19,7 @@
             "name": "Christchurch Hostel",
             "unitPrice": 30,
             "mealsAvailable": "Breakfast, lunch, and dinner available",
-            "imgSrc": "../img/accom/hostel.jpeg",
+            "imgSrc": "../img/accom/hostel.jpg",
             "location": "Christchurch",
             "maxGuests": 1,
             "maxNights": 10
@@ -79,7 +79,7 @@
             "name": "Christchurch House",
             "unitPrice": 240,
             "mealsAvailable": "Breakfast and dinner provided",
-            "imgSrc": "../img/accom/house.jpg",
+            "imgSrc": "../img/accom/house.jpeg",
             "location": "Christchurch",
             "maxGuests": 4,
             "maxNights": 15
@@ -90,7 +90,7 @@
             "name": "Wellington House",
             "unitPrice": 240,
             "mealsAvailable": "Breakfast and dinner provided",
-            "imgSrc": "../img/accom/house.jpg",
+            "imgSrc": "../img/accom/house.jpeg",
             "location": "Wellington",
             "maxGuests": 4,
             "maxNights": 15
@@ -102,7 +102,7 @@
             "name": "Tauranga House",
             "unitPrice": 240,
             "mealsAvailable": "Breakfast, lunch, and dinner provided",
-            "imgSrc": "../img/accom/house.jpg",
+            "imgSrc": "../img/accom/house.jpeg",
             "location": "Auckland",
             "maxGuests": 4,
             "maxNights": 15
