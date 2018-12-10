@@ -10,6 +10,7 @@ let bodyEl = $('body'),
     accommSummaryScreenContainerEl = $('#accommSummaryScreen .summary-container'),
     inputTitleEl = $('#inputTitle'),
     leftArrowEl = $('#leftArrow'),
+    inputNavBtnEl = $('#inputNavBtn'),
     rightArrowEl = $('#rightArrow'),
     finishButtonEl = $('#finishButton'),
     whenInputEl = $('#whenInput'),
@@ -102,7 +103,9 @@ function slideInputContainerBackwards() {
 function checkInputIsStart() {
     if (currInputScreen == 0) {
         leftArrowEl.css("visibility", "hidden");
+        inputNavBtnEl.css("visibility", "hidden");
     } else {
+        inputNavBtnEl.css("visibility", "visible");
         leftArrowEl.css("display", "block");
         leftArrowEl.css("visibility", "visible");
     }

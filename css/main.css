@@ -379,6 +379,10 @@ body {
   color: #fff;
 }
 
+.form-container .input-nav .input-nav-button {
+  visibility: hidden;
+}
+
 .accommSummaryScreen .summary-container {
   margin: auto;
   margin-top: 5%;
