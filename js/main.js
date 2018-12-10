@@ -19,11 +19,17 @@ let bodyEl = $('body'),
     moreGuestsEl = $('#moreGuests'),
     fewerGuestsEl = $('#fewerGuests'),
     whatInputEl = $('#whatInput'),
-    backToFormBtnEl = $('#backToFormBtn');
+    backToFormBtnEl = $('#backToFormBtn'),
+    contentEl = $('#content'),
+    blurbEl = $('#blurb'),
+    // Modal
+    // NEED: More info button
+    modalCloseBtnEl = $('.modal-overlay-close');
 
 // Data
 let accommData, mealData,
     inputTitles = ["WHEN?", "WHERE?", "WHO?", "WHAT?"],
+    filteredAccommodation,
     selectedLocation;
 
 // Misc variables
@@ -33,7 +39,8 @@ let currDate = Date.now(),
 /**
  * Initialise app
  */
-function init () {
+function init() {
+    filteredAccommodation = [];
     $.getJSON('json/accommodation.json', function (options) {
         accommData = options.accommodation;
     });
@@ -54,7 +61,7 @@ function init () {
     moreGuestsEl.on('click', increaseNoOfGuests);
     fewerGuestsEl.on('click', decreaseNoOfGuests);
     noOfGuestsEl.on('blur', checkWhoInput);
-    finishButtonEl.on('click', filterByUserInput).on('click', showSummary);
+    finishButtonEl.on('click', showSummary);
     backToFormBtnEl.on('click', backToForm);
     $('.geosearch .results').on('click', function (e) {
         selectedLocation = $(e.target).text();
@@ -64,7 +71,7 @@ function init () {
 /**
  * Slides user input container forwards for each field.
  */
-function slideInputContainerForwards () {
+function slideInputContainerForwards() {
     currInputScreen++;
     checkInputIsStart();
     checkInputIsEnd();
@@ -78,7 +85,7 @@ function slideInputContainerForwards () {
 /**
  * Slides user input container backwards for each field.
  */
-function slideInputContainerBackwards () {
+function slideInputContainerBackwards() {
     currInputScreen--;
     checkInputIsStart();
     checkInputIsEnd();
@@ -92,7 +99,7 @@ function slideInputContainerBackwards () {
 /**
  * Checks whether the input form state is the first field.
  */
-function checkInputIsStart () {
+function checkInputIsStart() {
     if (currInputScreen == 0) {
         leftArrowEl.css("visibility", "hidden");
     } else {
@@ -104,7 +111,7 @@ function checkInputIsStart () {
 /**
  * Checks whether the input form state is the final field.
  */
-function checkInputIsEnd () {
+function checkInputIsEnd() {
     if (currInputScreen == 2) {
         finishButtonEl.css('display', 'block');
         rightArrowEl.css('display', 'none');
@@ -117,16 +124,16 @@ function checkInputIsEnd () {
 /**
  * Sets up the location (search) functionality.
  */
-function setUpMap () {
+function setUpMap() {
     // Map variables
     var GeoSearchControl = window.GeoSearch.GeoSearchControl,
         OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider,
         provider = new OpenStreetMapProvider(),
         baseMap = new L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        id: 'mapbox.streets',
-        accessToken: 'pk.eyJ1IjoiaG9sbHlqbnoiLCJhIjoiY2pvbnBuc2ZhMWVkYzNqcGNvNnBjeDI2aiJ9.esIDISrS1QjPynfQs4sKKA'
-    });
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: 'mapbox.streets',
+            accessToken: 'pk.eyJ1IjoiaG9sbHlqbnoiLCJhIjoiY2pvbnBuc2ZhMWVkYzNqcGNvNnBjeDI2aiJ9.esIDISrS1QjPynfQs4sKKA'
+        });
     var map = L.map('map', {
         center: [-40.9, 173],
         zoom: 4,
@@ -145,11 +152,11 @@ function setUpMap () {
 
     // Geosearch input
     var leafletBarPartEl = $('.leaflet-bar-part'),
-    geosearchFormEl = $('.geosearch form'),
-    geosearchResetEl = $('.geosearch .reset'),
-    geosearchGlassEl = $('.geosearch .glass'),
-    geosearchGlassContentEl = $('.geosearch .glass div'),
-    geosearchResultsEl = $('.geosearch .results');
+        geosearchFormEl = $('.geosearch form'),
+        geosearchResetEl = $('.geosearch .reset'),
+        geosearchGlassEl = $('.geosearch .glass'),
+        geosearchGlassContentEl = $('.geosearch .glass div'),
+        geosearchResultsEl = $('.geosearch .results');
 
     // Deal with html/styling
     leafletBarPartEl.html('<i class="fas fa-search"></i>');
@@ -162,7 +169,7 @@ function setUpMap () {
         geosearchResultsEl.css('display', 'block');
     });
     geosearchResetEl.on('click', resetForm);
-    geosearchResultsEl.on('click', function() {
+    geosearchResultsEl.on('click', function () {
         geosearchResultsEl.removeClass('active');
         geosearchResultsEl.css('display', 'none');
         geosearchFormEl.removeClass('active');
@@ -171,7 +178,7 @@ function setUpMap () {
     // geosearchFormEl.on('blur', function () {
     //     geosearchGlassContentEl.on('blur', resetForm);
     // });
-    function resetForm () {
+    function resetForm() {
         geosearchFormEl.css('height', '2em').css('overflow-y', 'hidden');
     };
 };
@@ -179,7 +186,7 @@ function setUpMap () {
 /**
  * Increases the value of number of guests input.
  */
-function increaseNoOfGuests () {
+function increaseNoOfGuests() {
     noOfGuestsEl.val(function (i, prev) {
         return ++prev;
     });
@@ -188,7 +195,7 @@ function increaseNoOfGuests () {
 /**
  * Decreases the value of number of guests input.
  */
-function decreaseNoOfGuests () {
+function decreaseNoOfGuests() {
     if (!(noOfGuestsEl.val() == 0)) {
         noOfGuestsEl.val(function (i, prev) {
             return --prev;
@@ -199,7 +206,7 @@ function decreaseNoOfGuests () {
 /**
  * Checks whether the number of guests is valid and resets if not.
  */
-function checkWhoInput () {
+function checkWhoInput() {
     let guests = noOfGuestsEl.val();
     if (guests < 0 || !(Math.floor(guests) == guests && $.isNumeric(guests))) {
         noOfGuestsEl.val('0');
@@ -209,34 +216,55 @@ function checkWhoInput () {
 /**
  * Changes screen to show summary.
  */
-function showSummary () {
-    let filteredAccommodation = filterByUserInput();
+function showSummary() {
+    contentEl.prepend('<a id="summary-logo" class="summary-logo" href="index.html"><img src="img/client-logo-site.png" alt="All Abroad"></a>');
+    blurbEl.html("Explore your accommdation options");
+    filteredAccommodation = filterByUserInput();
+    console.log(filteredAccommodation);
     userInputScreenEl.removeClass('active');
     accommSummaryScreenEl.addClass('active');
     bodyEl.css('background-image', 'url(../../img/aspiring2.JPG)');
     navbarEl.css('visibility', 'visible');
     setUpGrid(filteredAccommodation);
+    // Modal
+    // Book now button on click e listener
+    // summaryGridImgEl.on('click', function() {
+    // var selectedImg = $(this);
+    // var modalImg = $('.modal-img');
+    // var newSrc = selectedImg.attr('src').replace('300/200', '560/360');
+    // modalImg.attr('src', newSrc);
+    //     $('.closed').removeClass('closed');
+    // });
+
+    modalCloseBtnEl.on('click', function () {
+        $('.modal-overlay').addClass('closed');
+        $('.modal').addClass('closed');
+    });
 };
 
 /**
  * Changes screen to return to user input form.
  */
-function backToForm () { 
+function backToForm() {
+    filteredAccommodation = [];
+    accommSummaryScreenContainerEl.html('');
     userInputScreenEl.addClass('active');
     accommSummaryScreenEl.removeClass('active');
     bodyEl.css('background-image', 'url(../../img/sunrise2.JPG)');
     navbarEl.css('visibility', 'hidden');
+    blurbEl.html("Short-term stays in New Zealand");
+    $('#summary-logo').remove();
 };
 
 /**
  * Changes screen to return to user input form.
- * @returns {Array} filteredAccommodation 
- */
-function filterByUserInput () {
-    var filteredAccommodation;
+* @returns {Array} filteredAccommodation
+    */
+function filterByUserInput() {
     var days = calcDays();
     var guests = noOfGuestsEl.val();
     var location = selectedLocation.split(/[ ,]+/)[0];
+    console.log(guests + " days:" + days + " " + location);
     filteredAccommodation = accommData.filter(function (option) {
         return days <= option.maxNights && guests <= option.maxGuests && location == option.location;
     });
@@ -245,37 +273,41 @@ function filterByUserInput () {
 
 /**
  * Calculates the number of days between user's selected dates.
- * @returns {number} days 
- */
-function calcDays () {
+ * @returns {number} days
+        */
+function calcDays() {
     var dates = [dateFromEl.val().split('/'), dateToEl.val().split('/')];
     var t1 = new Date((dates[0])[2], (dates[0])[0], (dates[0])[1]).getTime();
     var t2 = new Date((dates[1])[2], (dates[1])[0], (dates[1])[1]).getTime();
     var difference = t2 - t1;
-    var days = Math.floor(difference/(1000*60*60*24));
+    var days = Math.floor(difference / (1000 * 60 * 60 * 24));
     return days;
 };
 
 /**
  * Sets up the HTML grid for summary screen.
- * @param {Array} filteredAccommodation 
- */
+*  @param {Array} filteredAccommodation
+*/
 function setUpGrid(filteredAccommodation) {
-    let htmlString = '';
-    $.each(filteredAccommodation, function(i, option) {
-        htmlString += getAccommodationSummaryHTML(option);
-    });
-    accommSummaryScreenContainerEl.html(htmlString);
+    if(filteredAccommodation == null || filteredAccommodation.length == 0) {
+        contentEl.append('<h2>Sorry, no options available!</h2><a class="button" href="index.html">New Booking</a>');
+    } else {
+        let htmlString = '';
+        $.each(filteredAccommodation, function (i, option) {
+            htmlString += getAccommodationSummaryHTML(option);
+        });
+        accommSummaryScreenContainerEl.html(htmlString);
+    }
 };
 
 /**
  * Get the summary HTML for the accommodation options.
- * @param {Object} option
- * @returns {String} 
- */
+* @param {Object} option
+* @returns {String}
+    */
 function getAccommodationSummaryHTML(option) {
     return `<div class="option">
-                <img src="${option.imgSrc}">
+            <img class="summary-img" src="${option.imgSrc}" alt="${option.name}">
                 <h2 class="title">${option.name}</h2>
                 <div class="info">
                     <h3>Type: ${option.type}</h3>

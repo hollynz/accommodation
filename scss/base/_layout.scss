@@ -13,6 +13,13 @@ html, body {
 
     /* screens */
     .content {
+        .summary-logo {
+            max-width: 8%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
         margin-top: 10%;
         padding-bottom: 100px;
         .screen {

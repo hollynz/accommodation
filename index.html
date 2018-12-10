@@ -64,8 +64,8 @@
     </nav>
 
 
-    <main class="content">
-        <h1 class="blurb">Short-term stays in New Zealand</h1>
+    <main id="content" class="content">
+        <h1 id="blurb" class="blurb">Short-term stays in New Zealand</h1>
         <div id="userInputScreen" class="screen userInputScreen active">
             <div class="background-level level">
                 <div class="form-container">
@@ -147,6 +147,14 @@
         </div>
         <div id="accommSummaryScreen" class="screen accommSummaryScreen">
             <div class="summary-container">
+                <!-- Modal dialog block: https://codepen.io/chriscoyier/pen/MeJWoM*/ -->
+                <div class="modal-overlay closed" id="modal-overlay">
+                    <i class="material-icons modal-overlay-close">close</i>
+                </div>
+                <div class="modal closed" id="modal">
+                    <!-- Dynamically insert content JS -->
+                    <!-- <img class="modal-img" src="" alt="Modal image"> -->
+                </div>
             </div>
         </div>
     </main>
