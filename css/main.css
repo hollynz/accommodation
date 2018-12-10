@@ -25,7 +25,7 @@ html .background-level, body .background-level {
 }
 
 html .content, body .content {
-  margin-top: 10%;
+  margin-top: 12%;
   padding-bottom: 100px;
 }
 
@@ -50,6 +50,10 @@ html .content .screen, body .content .screen {
 
 html .content .screen.active, body .content .screen.active {
   display: block;
+}
+
+html .content h1:not(:first-child), body .content h1:not(:first-child) {
+  margin-top: 0.4em;
 }
 
 body {

@@ -220,29 +220,42 @@ function checkWhoInput() {
  * Changes screen to show summary.
  */
 function showSummary() {
-    contentEl.prepend('<a id="summary-logo" class="summary-logo" href="index.html"><img src="img/client-logo-site.png" alt="All Abroad"></a>');
-    blurbEl.html("Explore your accommdation options");
-    filteredAccommodation = filterByUserInput();
-    console.log(filteredAccommodation);
-    userInputScreenEl.removeClass('active');
-    accommSummaryScreenEl.addClass('active');
-    bodyEl.css('background-image', 'url(../../img/aspiring2.JPG)');
-    navbarEl.css('visibility', 'visible');
-    setUpGrid(filteredAccommodation);
-    // Modal
-    // Book now button on click e listener
-    // summaryGridImgEl.on('click', function() {
-    // var selectedImg = $(this);
-    // var modalImg = $('.modal-img');
-    // var newSrc = selectedImg.attr('src').replace('300/200', '560/360');
-    // modalImg.attr('src', newSrc);
-    //     $('.closed').removeClass('closed');
-    // });
+    let dateRegex = /([0-9][1-2])\/([0-2][0-9]|[3][0-1])\/((19|20)[0-9]{2})/,
+        locationRegex = /\w*[a-zA-Z]\w*/,
+        geosearchGlassEl = $('.geosearch .glass');
+    if (!(dateFromEl.val().match(dateRegex)) || !(dateToEl.val().match(dateRegex))) {
+        slideInputContainerBackwards();
+        slideInputContainerBackwards();
+        alert("Please enter valid dates.");
+    } else if (!geosearchGlassEl.val().match(locationRegex)) {
+        slideInputContainerBackwards();
+        alert("Please enter a valid location.");
+    } else if (noOfGuestsEl.val() <= 0) {
+        alert("Please enter a valid number of guests.");
+    } else {
+        contentEl.prepend('<a id="summary-logo" class="summary-logo" href="index.html"><img src="img/client-logo-site.png" alt="All Abroad"></a>');
+        blurbEl.html("Explore your accommdation options");
+        filteredAccommodation = filterByUserInput();
+        userInputScreenEl.removeClass('active');
+        accommSummaryScreenEl.addClass('active');
+        bodyEl.css('background-image', 'url(../../img/aspiring2.JPG)');
+        navbarEl.css('visibility', 'visible');
+        setUpGrid(filteredAccommodation);
+        // Modal
+        // Book now button on click e listener
+        // summaryGridImgEl.on('click', function() {
+        // var selectedImg = $(this);
+        // var modalImg = $('.modal-img');
+        // var newSrc = selectedImg.attr('src').replace('300/200', '560/360');
+        // modalImg.attr('src', newSrc);
+        //     $('.closed').removeClass('closed');
+        // });
 
-    modalCloseBtnEl.on('click', function () {
-        $('.modal-overlay').addClass('closed');
-        $('.modal').addClass('closed');
-    });
+        modalCloseBtnEl.on('click', function () {
+            $('.modal-overlay').addClass('closed');
+            $('.modal').addClass('closed');
+        });
+    }
 };
 
 /**
@@ -292,7 +305,7 @@ function calcDays() {
 *  @param {Array} filteredAccommodation
 */
 function setUpGrid(filteredAccommodation) {
-    if(filteredAccommodation == null || filteredAccommodation.length == 0) {
+    if (filteredAccommodation == null || filteredAccommodation.length == 0) {
         contentEl.append('<h2>Sorry, no options available!</h2><a class="button" href="index.html">New Booking</a>');
     } else {
         let htmlString = '';
