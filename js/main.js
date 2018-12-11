@@ -47,9 +47,6 @@ function init() {
     $.getJSON('json/accommodation.json', function (options) {
         accommData = options.accommodation;
     });
-    $.getJSON('json/meals.json', function (options) {
-        mealData = options.meals;
-    });
     // Datepicker: FIX the past date issue!!!
     $('[data-toggle="datepicker"]').datepicker({
         // isDisabled: function (date) {

@@ -51,11 +51,11 @@ body {
 
 .navbar {
   visibility: hidden;
-  position: fixed;
+  position: absolute;
   margin: auto 0;
   width: 100%;
   background: none;
-  padding: 1%;
+  padding: 2% 0;
 }
 
 .navbar .navbar-brand .fas {
@@ -68,7 +68,7 @@ body {
 }
 
 .navbar > .container {
-  width: 80%;
+  width: 70%;
 }
 
 .form-container {
@@ -447,7 +447,7 @@ body {
 
 .summaryScreen .summary-container .summary-content-container {
   background: white;
-  width: 90%;
+  max-width: 90%;
   margin: auto;
   margin-top: 2%;
   padding: 4%;
@@ -460,7 +460,9 @@ body {
 }
 
 .summaryScreen .summary-container .summary-content-container .option {
-  width: 30%;
+  -ms-flex-preferred-size: 1;
+      flex-basis: 1;
+  width: 250px;
   margin: auto;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;

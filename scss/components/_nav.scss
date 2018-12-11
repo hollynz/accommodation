@@ -1,10 +1,10 @@
 .navbar {
     visibility: hidden;
-    position: fixed;
+    position: absolute;
     margin: auto 0;
     width: 100%;
     background: none;
-    padding: 1%;
+    padding: 2% 0;
     .navbar-brand {
         .fas {
             font-size: 3em;
@@ -17,5 +17,5 @@
 }
 
 .navbar > .container {
-    width: 80%;
+    width: 70%;
 }

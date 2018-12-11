@@ -36,7 +36,7 @@
         }
         .summary-content-container {
             background: white;
-            width: 90%;
+            max-width: 90%;
             margin: auto;
             margin-top: 2%;
             padding: 4%;
@@ -44,7 +44,8 @@
             flex-wrap: wrap;
             border-radius: $border-radius-large;
             .option {
-                width: 30%;
+                flex-basis: 1;
+                width: 250px;
                 margin: auto;
                 display: inline-flex;
                 flex-direction: column;
