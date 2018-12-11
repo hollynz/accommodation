@@ -14,8 +14,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bulma CSS framework: https://bulma.io/ -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
-    <!-- jQuery datepicker plugin: https://www.jqueryscript.net/time-clock/Highly-Customizable-jQuery-Datepicker-Plugin-Datepicker.html -->
-    <link rel="stylesheet" href="node_modules/@chenfengyuan/datepicker/dist/datepicker.min.css">
     <!-- FontAwesome (icons): https://fontawesome.com/ -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
         crossorigin="anonymous">
@@ -26,6 +24,8 @@
     <link href="https://unpkg.com/leaflet-geosearch@latest/assets/css/leaflet.css" rel="stylesheet" />
     <!-- Google fonts: https://fonts.google.com/ -->
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <!-- jQuery datepicker plugin: https://www.jqueryscript.net/time-clock/Highly-Customizable-jQuery-Datepicker-Plugin-Datepicker.html -->
+    <link rel="stylesheet" href="node_modules/@chenfengyuan/datepicker/dist/datepicker.min.css">
     <link rel="stylesheet" href="dist/css/main.min.css">
 </head>
 
@@ -84,8 +84,8 @@
 
                             <!-- WHEN user input -->
                             <div id="whenInput" class="when-input inputs">
-                                <input id="dateFrom" class="input" type="text" placeholder="From" data-toggle="datepicker">
-                                <input id="dateTo" class="input" type="text" placeholder="To" data-toggle="datepicker">
+                                <input id="dateFrom" class="input" type="text" placeholder="From" data-toggle="datepicker" autocomplete="off" datepicker>
+                                <input id="dateTo" class="input" type="text" placeholder="To" data-toggle="datepicker" autocomplete="off" datepicker>
                             </div>
 
                             <!-- WHERE user input -->
@@ -148,8 +148,19 @@
                 </div>
             </div>
         </div>
-        <div id="accommSummaryScreen" class="screen accommSummaryScreen">
-            <div class="summary-container">
+        <div id="summaryScreen" class="screen summaryScreen">
+            <div id="summaryContainer" class="summary-container">
+                <a id="summaryLogo" class="summary-logo" href="index.html">
+                    <img src="img/client-logo-site.png" alt="All Abroad">
+                </a>
+                <h1 id="summaryBlurb" class="blurb">Explore your accommdation options</h1>
+                <!-- If no bookings available -->
+                <div id="noBookings" class="no-bookings hidden">
+                    <h2>Sorry, no options available!</h2>
+                    <a class="button" href="index.html">New Booking</a>
+                </div>
+                <div id="summaryContentContainer" class="summary-content-container hidden">
+                </div>
                 <!-- Modal dialog block: https://codepen.io/chriscoyier/pen/MeJWoM*/ -->
                 <div class="modal-overlay closed" id="modal-overlay">
                     <i class="material-icons modal-overlay-close">close</i>

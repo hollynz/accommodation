@@ -1,40 +1,93 @@
-.accommSummaryScreen {
+.summaryScreen {
+    .no-bookings {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-self: center;
+        margin-top: 4%;
+        h2 {
+            color: white;
+            font-weight: 400;
+        }
+        .button {
+            width: 40%;
+            margin: auto;
+        }
+    }
     .summary-container {
         margin: auto;
         margin-top: 5%;
         width: 80%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
         justify-content: space-around;
         align-content: space-between;
         color: $white;
-        .option {
-            width: 35vh;
-            margin: auto;
+        background: $brand-red;
+        padding: 3%;
+        border-radius: $border-radius-large;
+        .summary-logo {
+            max-width: 15%;
             display: flex;
-            flex-direction: column;
             justify-content: center;
-            background-color: $brand-yellow-trans;
-            border-radius: $border-radius-small;
-            padding: 1%;
-            // border: $brand-yellow solid 0.5px;
-            img {
-                max-width: 70%;
-                align-self: center;
-                // outline: $brand-yellow solid 0.5px;
-                // border-radius: $border-radius-small;
-            }
-            .info {
-                width: 70%;
+            align-items: center;
+            margin: 0 auto;
+        }
+        .summary-content-container {
+            background: white;
+            width: 90%;
+            margin: auto;
+            margin-top: 2%;
+            padding: 4%;
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: $border-radius-large;
+            .option {
+                width: 30%;
+                margin: auto;
+                display: inline-flex;
+                flex-direction: column;
                 justify-content: center;
-            }
-            .button {
-                width: 40%;
-                align-self: flex-end;
-            }
-            .title {
-                color: $white;
+                border-radius: $border-radius-small;
+                .option-container {
+                    width: 90%;
+                    margin: auto;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    font-size: 80%;
+                }
+                img {
+                    max-width: 100%;
+                    align-self: center;
+                }
+                hr {
+                    background-color: $brand-red;
+                }
+                .info {
+                    justify-content: center;
+                    .title {
+                        color: black;
+                        margin-top: 0;
+                    }
+                    
+                    .location-type {
+                        color: $brand-red;
+                    }
+                    h3 {
+                        font-weight: 400;
+                        margin-top: 0;
+                    }
+                    .guests, .price, .meals {
+                        font-size: 96%;
+                    }
+                }
+                .button {
+                    margin-top: 4%;
+                    width: 40%;
+                    align-self: flex-end;
+                }
             }
         }
     }

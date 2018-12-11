@@ -119,11 +119,12 @@
                         // position: relative;
                         input {
                             font-size: 0.8em;
-                            color: $placeholder-color !important;
+                            color: $placeholder-color;
                         }
                         .glass {
                             padding: 1.25em 0;
                             color: $placeholder-color;
+                            color: black;
                         }
                     }
                     .fas {

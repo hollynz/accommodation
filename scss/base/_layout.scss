@@ -3,6 +3,9 @@ html, body {
     overflow: auto;
     position: relative;
     margin: 0;
+    .hidden {
+        display: none !important;
+    }
     .content {
         margin-top: 9%;
         padding-bottom: 100px;
@@ -10,13 +13,6 @@ html, body {
             margin: $height-15 auto;
             margin-top: 0;
             width: $full;
-        }
-        .summary-logo {
-            max-width: 8%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto;
         }
         // Screens
         .screen {

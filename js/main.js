@@ -6,8 +6,9 @@ let bodyEl = $('body'),
     dateToEl = $('#dateTo'),
     inputContainerEl = $('#inputContainer'),
     userInputScreenEl = $('#userInputScreen'),
-    accommSummaryScreenEl = $('#accommSummaryScreen'),
-    accommSummaryScreenContainerEl = $('#accommSummaryScreen .summary-container'),
+    summaryScreenEl = $('#summaryScreen'),
+    summaryScreenContainerEl = $('#summaryContainer'),
+    summaryScreenContentContainerEl = $('#summaryContentContainer'),
     inputTitleEl = $('#inputTitle'),
     leftArrowEl = $('#leftArrow'),
     inputNavBtnEl = $('#inputNavBtn'),
@@ -23,6 +24,7 @@ let bodyEl = $('body'),
     backToFormBtnEl = $('#backToFormBtn'),
     contentEl = $('#content'),
     blurbEl = $('#blurb'),
+    noBookingsEl = $('#noBookings'),
     // Modal
     // NEED: More info button
     modalCloseBtnEl = $('.modal-overlay-close');
@@ -34,13 +36,13 @@ let accommData, mealData,
     selectedLocation;
 
 // Misc variables
-let currDate = Date.now(),
-    currInputScreen = 0;
+let currDate, currInputScreen = 0;
 
 /**
  * Initialise app
  */
 function init() {
+    currDate = Date.now();
     filteredAccommodation = [];
     $.getJSON('json/accommodation.json', function (options) {
         accommData = options.accommodation;
@@ -49,10 +51,16 @@ function init() {
         mealData = options.meals;
     });
     // Datepicker: FIX the past date issue!!!
-    datepickerInputEl.datepicker({
+    $('[data-toggle="datepicker"]').datepicker({
+        // isDisabled: function (date) {
+        //     console.log(date.valueOf());
+        //     return date.valueOf() < currDate ? true : false;
+        // },
         isDisabled: function (date) {
-            return date.valueOf() < currDate ? true : false;
-        }
+            return date.getDay() === 3 ? true : false;
+        },
+        format: 'dd/mm/yyyy',
+        autoHide: true,
     });
     setUpMap();
     checkInputIsStart();
@@ -171,7 +179,9 @@ function setUpMap() {
         geosearchFormEl.css('height', '25vh').css('overflow-y', 'scroll');
         geosearchResultsEl.css('display', 'block');
     });
-    geosearchResetEl.on('click', resetForm);
+    geosearchResetEl.on('click', resetForm).on('click', function () {
+        geosearchGlassEl.focus();
+    });
     geosearchResultsEl.on('click', function () {
         geosearchResultsEl.removeClass('active');
         geosearchResultsEl.css('display', 'none');
@@ -220,7 +230,7 @@ function checkWhoInput() {
  * Changes screen to show summary.
  */
 function showSummary() {
-    let dateRegex = /([0-9][1-2])\/([0-2][0-9]|[3][0-1])\/((19|20)[0-9]{2})/,
+    let dateRegex = /([0-2][0-9]|[3][0-1])\/([0-9][1-2])\/((19|20)[0-9]{2})/,
         locationRegex = /\w*[a-zA-Z]\w*/,
         geosearchGlassEl = $('.geosearch .glass');
     if (!(dateFromEl.val().match(dateRegex)) || !(dateToEl.val().match(dateRegex))) {
@@ -233,14 +243,12 @@ function showSummary() {
     } else if (noOfGuestsEl.val() <= 0) {
         alert("Please enter a valid number of guests.");
     } else {
-        contentEl.prepend('<a id="summary-logo" class="summary-logo" href="index.html"><img src="img/client-logo-site.png" alt="All Abroad"></a>');
-        blurbEl.html("Explore your accommdation options");
         filteredAccommodation = filterByUserInput();
-        userInputScreenEl.removeClass('active');
-        accommSummaryScreenEl.addClass('active');
         bodyEl.css('background-image', 'url(../../img/beach.JPG)');
         navbarEl.css('visibility', 'visible');
         setUpGrid(filteredAccommodation);
+        userInputScreenEl.removeClass('active');
+        summaryScreenEl.addClass('active');
         // Modal
         // Book now button on click e listener
         // summaryGridImgEl.on('click', function() {
@@ -262,13 +270,14 @@ function showSummary() {
  */
 function backToForm() {
     filteredAccommodation = [];
-    accommSummaryScreenContainerEl.html('');
+    // Instead: set hide and show class on content so it doesn't recreate it every time!!!!!!!
+    summaryScreenContentContainerEl.html('');
+    summaryScreenContentContainerEl.addClass('hidden');
     userInputScreenEl.addClass('active');
-    accommSummaryScreenEl.removeClass('active');
+    summaryScreenEl.removeClass('active');
     bodyEl.css('background-image', 'url(../../img/sunrise2.JPG)');
     navbarEl.css('visibility', 'hidden');
-    blurbEl.html("Short-term stays in New Zealand");
-    $('#summary-logo').remove();
+    blurbEl.removeClass('hidden');
 };
 
 /**
@@ -279,7 +288,6 @@ function filterByUserInput() {
     var days = calcDays();
     var guests = noOfGuestsEl.val();
     var location = selectedLocation.split(/[ ,]+/)[0];
-    console.log(guests + " days:" + days + " " + location);
     filteredAccommodation = accommData.filter(function (option) {
         return days <= option.maxNights && guests <= option.maxGuests && location == option.location;
     });
@@ -292,8 +300,9 @@ function filterByUserInput() {
         */
 function calcDays() {
     var dates = [dateFromEl.val().split('/'), dateToEl.val().split('/')];
-    var t1 = new Date((dates[0])[2], (dates[0])[0], (dates[0])[1]).getTime();
-    var t2 = new Date((dates[1])[2], (dates[1])[0], (dates[1])[1]).getTime();
+    console.log(dates);
+    var t1 = new Date((dates[0])[2], (dates[0])[1], (dates[0])[0]).getTime();
+    var t2 = new Date((dates[1])[2], (dates[1])[1], (dates[1])[0]).getTime();
     var difference = t2 - t1;
     var days = Math.floor(difference / (1000 * 60 * 60 * 24));
     return days;
@@ -304,14 +313,18 @@ function calcDays() {
 *  @param {Array} filteredAccommodation
 */
 function setUpGrid(filteredAccommodation) {
+    blurbEl.addClass('hidden');
     if (filteredAccommodation == null || filteredAccommodation.length == 0) {
-        contentEl.append('<h2>Sorry, no options available!</h2><a class="button" href="index.html">New Booking</a>');
+        noBookingsEl.removeClass('hidden');
+        summaryScreenContentContainerEl.addClass('hidden');
     } else {
+        noBookingsEl.addClass('hidden');
+        summaryScreenContentContainerEl.removeClass('hidden');
         let htmlString = '';
         $.each(filteredAccommodation, function (i, option) {
             htmlString += getAccommodationSummaryHTML(option);
         });
-        accommSummaryScreenContainerEl.html(htmlString);
+        summaryScreenContentContainerEl.html(htmlString);
     }
 };
 
@@ -321,15 +334,43 @@ function setUpGrid(filteredAccommodation) {
 * @returns {String}
     */
 function getAccommodationSummaryHTML(option) {
-    return `<div class="option">
-            <img class="summary-img" src="${option.imgSrc}" alt="${option.name}">
-                <h2 class="title">${option.name}</h2>
-                <div class="info">
-                    <h3>Type: ${option.type}</h3>
-                    <h3>Price: $${option.unitPrice}</h3>
-                </div>
-                <button class="button">Book now!</button>
-            </div>`;
+    let guest = 'guest',
+        guests = 'guests',
+        night = 'night',
+        nights = 'nights';
+    if (noOfGuestsEl.val() > 1) {
+        if (calcDays() > 1) {
+            return getAccommodationSummaryWithPlurals(option, guests, nights);
+        } return getAccommodationSummaryWithPlurals(option, guests, night);
+    } else if (calcDays() > 1) {
+        return getAccommodationSummaryWithPlurals(option, guest, nights);
+    } return getAccommodationSummaryWithPlurals(option, guest, night);
 };
+
+/**
+ * Get the summary HTML for the accommodation options on the basis of whether the guests and days are plural or not.
+* @param {Object} option
+* @param {number} guests
+* @param {number} nights
+* @returns {String}
+*/
+function getAccommodationSummaryWithPlurals(option, guests, nights) {
+    return `<div class="option">
+                <div class="option-container">
+                    <img class="summary-img" src="${option.imgSrc}" alt="${option.name}">
+                </div>
+                <hr>
+                <div class="option-container">
+                    <div class="info">
+                        <h2 class="title">${option.name}</h2>
+                        <h3 class="location-type">${option.location} | ${option.type}</h3>
+                        <h3 class="guests">${noOfGuestsEl.val()} ${guests} | ${calcDays()} ${nights}</h3>
+                        <h3 class="price">$${calcDays() * option.unitPrice} | $${option.unitPrice} per night</h3>
+                        <h3 class="meals">${option.mealsAvailable}</h3>
+                    </div>
+                    <button class="button">Book now!</button>
+                </div>
+            </div>`;
+}
 
 init();
