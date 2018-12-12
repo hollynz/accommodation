@@ -10,7 +10,8 @@
             "imgSrc": "../img/accom/hostel.jpg",
             "location": "Wellington",
             "maxGuests": 1,
-            "maxNights": 10
+            "maxNights": 10,
+            "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan magna libero, at ultricies diam lobortis eu. Ut pellentesque lacus nisl, et venenatis urna tincidunt ut. Phasellus faucibus tristique lorem, et pharetra elit consectetur et. Donec rutrum velit sed blandit egestas."
         },
         {
             "id": 1,
@@ -22,10 +23,11 @@
             "imgSrc": "../img/accom/hostel.jpg",
             "location": "Christchurch",
             "maxGuests": 1,
-            "maxNights": 10
+            "maxNights": 10,
+            "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan magna libero, at ultricies diam lobortis eu. Ut pellentesque lacus nisl, et venenatis urna tincidunt ut. Phasellus faucibus tristique lorem, et pharetra elit consectetur et. Donec rutrum velit sed blandit egestas."
         },
         {
-            "id": 4,
+            "id": 2,
             "category": 1,
             "type": "Motel",
             "name": "Nelson Motel",
@@ -34,10 +36,11 @@
             "imgSrc": "../img/accom/motel.jpeg",
             "location": "Nelson",
             "maxGuests": 4,
-            "maxNights": 10
+            "maxNights": 10,
+            "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan magna libero, at ultricies diam lobortis eu. Ut pellentesque lacus nisl, et venenatis urna tincidunt ut. Phasellus faucibus tristique lorem, et pharetra elit consectetur et. Donec rutrum velit sed blandit egestas."
         },
         {
-            "id": 5,
+            "id": 3,
             "category": 1,
             "type": "Motel",
             "name": "Greymouth Motel",
@@ -46,10 +49,11 @@
             "imgSrc": "../img/accom/motel.jpeg",
             "location": "Greymouth",
             "maxGuests": 4,
-            "maxNights": 10
+            "maxNights": 10,
+            "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan magna libero, at ultricies diam lobortis eu. Ut pellentesque lacus nisl, et venenatis urna tincidunt ut. Phasellus faucibus tristique lorem, et pharetra elit consectetur et. Donec rutrum velit sed blandit egestas."
         },
         {
-            "id": 6,
+            "id": 4,
             "category": 2,
             "type": "Hotel",
             "name": "Christchurch Hotel",
@@ -58,10 +62,11 @@
             "imgSrc": "../img/accom/hotel.jpeg",
             "location": "Christchurch",
             "maxGuests": 2,
-            "maxNights": 5
+            "maxNights": 5,
+            "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan magna libero, at ultricies diam lobortis eu. Ut pellentesque lacus nisl, et venenatis urna tincidunt ut. Phasellus faucibus tristique lorem, et pharetra elit consectetur et. Donec rutrum velit sed blandit egestas."
         },
         {
-            "id": 7,
+            "id": 5,
             "category": 2,
             "type": "Hotel",
             "name": "Auckland Hotel",
@@ -70,10 +75,11 @@
             "imgSrc": "../img/accom/hotel.jpeg",
             "location": "Auckland",
             "maxGuests": 2,
-            "maxNights": 5
+            "maxNights": 5,
+            "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan magna libero, at ultricies diam lobortis eu. Ut pellentesque lacus nisl, et venenatis urna tincidunt ut. Phasellus faucibus tristique lorem, et pharetra elit consectetur et. Donec rutrum velit sed blandit egestas."
         },
         {
-            "id": 8,
+            "id": 6,
             "category": 3,
             "type": "House",
             "name": "Christchurch House",
@@ -82,10 +88,11 @@
             "imgSrc": "../img/accom/house.jpeg",
             "location": "Christchurch",
             "maxGuests": 4,
-            "maxNights": 15
+            "maxNights": 15,
+            "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan magna libero, at ultricies diam lobortis eu. Ut pellentesque lacus nisl, et venenatis urna tincidunt ut. Phasellus faucibus tristique lorem, et pharetra elit consectetur et. Donec rutrum velit sed blandit egestas."
         },
         {
-            "id": 9,
+            "id": 7,
             "category": 3,
             "name": "Wellington House",
             "unitPrice": 240,
@@ -93,10 +100,11 @@
             "imgSrc": "../img/accom/house.jpeg",
             "location": "Wellington",
             "maxGuests": 4,
-            "maxNights": 15
+            "maxNights": 15,
+            "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan magna libero, at ultricies diam lobortis eu. Ut pellentesque lacus nisl, et venenatis urna tincidunt ut. Phasellus faucibus tristique lorem, et pharetra elit consectetur et. Donec rutrum velit sed blandit egestas."
         },
         {
-            "id": 10,
+            "id": 8,
             "category": 3,
             "type": "House",
             "name": "Tauranga House",
@@ -105,7 +113,8 @@
             "imgSrc": "../img/accom/house.jpeg",
             "location": "Auckland",
             "maxGuests": 4,
-            "maxNights": 15
+            "maxNights": 15,
+            "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan magna libero, at ultricies diam lobortis eu. Ut pellentesque lacus nisl, et venenatis urna tincidunt ut. Phasellus faucibus tristique lorem, et pharetra elit consectetur et. Donec rutrum velit sed blandit egestas."
         }
     ]
 }

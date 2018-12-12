@@ -24,6 +24,8 @@
     <link href="https://unpkg.com/leaflet-geosearch@latest/assets/css/leaflet.css" rel="stylesheet" />
     <!-- Google fonts: https://fonts.google.com/ -->
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">    <!-- Izimodal jQuery modal plugin: http://izimodal.marcelodolce.com/#modal-default -->
+    <link rel="stylesheet" href="node_modules/izimodal/css/iziModal.min.css">
     <!-- jQuery datepicker plugin: https://www.jqueryscript.net/time-clock/Highly-Customizable-jQuery-Datepicker-Plugin-Datepicker.html -->
     <link rel="stylesheet" href="node_modules/@chenfengyuan/datepicker/dist/datepicker.min.css">
     <link rel="stylesheet" href="dist/css/main.min.css">
@@ -34,7 +36,7 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-    
+
 
 
     <main id="content" class="content">
@@ -122,34 +124,18 @@
             </div>
         </div>
         <div id="summaryScreen" class="screen summaryScreen">
-                <nav id="navbar" class="navbar">
-                        <div class="container">
-                            <div class="navbar-brand">
-                                <div class="navbar-item">
-                                    <i id="backToFormBtn" class="fas fa-arrow-alt-circle-left"></i>
-                                </div>
-                            </div>
-                            <div class="navbar-menu">
-                                <!-- <div class="navbar-start">
-                                    <a class="navbar-item">
-                                        Home
-                                    </a>
-                                    <a class="navbar-item">
-                                        Documentation
-                                    </a>
-                                </div> -->
-                                <div class="navbar-end">
-                                    <div class="navbar-item">
-                                        <div class="buttons">
-                                            <a class="button" href="index.html">
-                                                New Search
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+            <nav id="navbar" class="navbar">
+                <div class="container level">
+                    <div class="navbar-brand">
+                        <div class="navbar-item">
+                            <i id="backToFormBtn" class="fas fa-arrow-alt-circle-left"></i>
                         </div>
-                    </nav>
+                    </div>
+                    <a class="button" href="index.html">
+                        New Search
+                    </a>
+                </div>
+            </nav>
             <div id="summaryContainer" class="summary-container">
                 <a id="summaryLogo" class="summary-logo" href="index.html">
                     <img src="img/client-logo-site.png" alt="All Abroad">
@@ -162,13 +148,9 @@
                 </div>
                 <div id="summaryContentContainer" class="summary-content-container hidden">
                 </div>
-                <!-- Modal dialog block: https://codepen.io/chriscoyier/pen/MeJWoM*/ -->
-                <div class="modal-overlay closed" id="modal-overlay">
-                    <i class="material-icons modal-overlay-close">close</i>
-                </div>
-                <div class="modal closed" id="modal">
-                    <!-- Dynamically insert content JS -->
-                    <!-- <img class="modal-img" src="" alt="Modal image"> -->
+
+                <!-- Modal dialog -->
+                <div id="modal" class="modal">
                 </div>
             </div>
         </div>
@@ -178,12 +160,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- jQuery datepicker plugin -->
     <script src="node_modules/@chenfengyuan/datepicker/dist/datepicker.min.js"></script>
+    <script src="node_modules/izimodal/js/iziModal.min.js" type="text/javascript"></script>
+
     <!-- Leaflet JS maps plugin -->
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
         crossorigin=""></script>
     <!-- Leaflet geosearch -->
     <script src="https://unpkg.com/leaflet-geosearch@latest/dist/bundle.min.js"></script>
+    <!-- Izimodal jQuery modal plugin -->
     <script src="js/main.js"></script>
+
 </body>
 
 </html>

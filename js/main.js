@@ -25,12 +25,11 @@ let bodyEl = $('body'),
     contentEl = $('#content'),
     blurbEl = $('#blurb'),
     noBookingsEl = $('#noBookings'),
-    // Modal
-    // NEED: More info button
+    modalEl = $('#modal'),
     modalCloseBtnEl = $('.modal-overlay-close');
 
 // Data
-let accommData, mealData,
+let accommData,
     inputTitles = ["WHEN?", "WHERE?", "WHO?", "WHAT?"],
     filteredAccommodation,
     selectedLocation;
@@ -49,12 +48,8 @@ function init() {
     });
     // Datepicker: FIX the past date issue!!!
     $('[data-toggle="datepicker"]').datepicker({
-        // isDisabled: function (date) {
-        //     console.log(date.valueOf());
-        //     return date.valueOf() < currDate ? true : false;
-        // },
         isDisabled: function (date) {
-            return date.getDay() === 3 ? true : false;
+            return date.valueOf() < currDate ? true : false;
         },
         format: 'dd/mm/yyyy',
         autoHide: true,
@@ -246,20 +241,73 @@ function showSummary() {
         setUpGrid(filteredAccommodation);
         userInputScreenEl.removeClass('active');
         summaryScreenEl.addClass('active');
-        // Modal
-        // Book now button on click e listener
-        // summaryGridImgEl.on('click', function() {
-        // var selectedImg = $(this);
-        // var modalImg = $('.modal-img');
-        // var newSrc = selectedImg.attr('src').replace('300/200', '560/360');
-        // modalImg.attr('src', newSrc);
-        //     $('.closed').removeClass('closed');
-        // });
-        modalCloseBtnEl.on('click', function () {
-            $('.modal-overlay').addClass('closed');
-            $('.modal').addClass('closed');
+        modalEl.iziModal({
+            radius: 10,
+            width: 800,
+            overlayColor: 'rgba(0, 0, 0, 0.7)'
         });
-    }
+        $('.more-info-button').on('click', function (event) {
+            showModal(event);
+            modalEl.iziModal('open');
+        }).on('.trigger', function (event) {
+            showModal(event);
+            modalEl.iziModal('open');
+        });
+    };
+};
+
+function showModal(event) {
+    event.preventDefault();
+    var selectedOptionId = $(event.target).val();
+    injectModalHTML(selectedOptionId);
+    setTimeout(function () {
+        var modalOptionHeight = parseInt($('#modalOption').css('height').slice(0, -2));
+        modalEl.css('height', `${modalOptionHeight*1.2}px`).css('display', 'flex');
+        $('#modalOption').css('align-self', 'center');
+    }, 50);
+}
+
+function injectModalHTML(selectedOptionId) {
+    var selectedOption = getSelectedOption(selectedOptionId);
+    var states = getPluralStates();
+    modalEl.html(`<button class="modal-close" data-izimodal-close="">
+                    </button>
+                    <div id="modalOption" class="option">
+                        <div class="top-container">
+                            <div class="columns">
+                                <div class="column is-half">
+                                    <h2 class="title">${selectedOption.name}</h2>
+                                    <h3 class="location-type">${selectedOption.location} | ${selectedOption.type}</h3>
+                                    <div class="info">
+                                        <h3 class="guests">${noOfGuestsEl.val()} ${states[0]} | ${calcDays()} ${states[1]}</h3>
+                                        <h3 class="meals">${selectedOption.mealsAvailable}</h3>
+                                        <h3 class="price">$${calcDays() * selectedOption.unitPrice} | $${selectedOption.unitPrice} per night</h3>
+                                    </div>
+                                </div>
+                                <div class="column is-half">
+                                    <img class="summary-img" src="${selectedOption.imgSrc}" alt="${selectedOption.name}">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="bottom-container">
+                            <p>${selectedOption.info}</p>
+                        </div>
+                        <a class="booking-button" href="#">
+                            <button class="button">Book now!</button>
+                        </a>
+                    </div>`);
+};
+
+function getSelectedOption(selectedOptionId) {
+    var selectedOption;
+    $.each(accommData, function (i, option) {
+        if (accommData[i].id === parseInt(selectedOptionId)) {
+            selectedOption = accommData[i];
+            return false;
+        };
+    });
+    return selectedOption;
 };
 
 /**
@@ -297,7 +345,6 @@ function filterByUserInput() {
         */
 function calcDays() {
     var dates = [dateFromEl.val().split('/'), dateToEl.val().split('/')];
-    console.log(dates);
     var t1 = new Date((dates[0])[2], (dates[0])[1], (dates[0])[0]).getTime();
     var t2 = new Date((dates[1])[2], (dates[1])[1], (dates[1])[0]).getTime();
     var difference = t2 - t1;
@@ -331,18 +378,23 @@ function setUpGrid(filteredAccommodation) {
 * @returns {String}
     */
 function getAccommodationSummaryHTML(option) {
+    let states = getPluralStates();
+    return getAccommodationSummaryWithPlurals(option, states[0], states[1]);
+};
+
+function getPluralStates() {
     let guest = 'guest',
         guests = 'guests',
         night = 'night',
         nights = 'nights';
     if (noOfGuestsEl.val() > 1) {
         if (calcDays() > 1) {
-            return getAccommodationSummaryWithPlurals(option, guests, nights);
-        } return getAccommodationSummaryWithPlurals(option, guests, night);
+            return [guests, nights];
+        } return [guests, night];
     } else if (calcDays() > 1) {
-        return getAccommodationSummaryWithPlurals(option, guest, nights);
-    } return getAccommodationSummaryWithPlurals(option, guest, night);
-};
+        return [guest, nights];
+    } return [guest, night];
+}
 
 /**
  * Get the summary HTML for the accommodation options on the basis of whether the guests and days are plural or not.
@@ -365,7 +417,7 @@ function getAccommodationSummaryWithPlurals(option, guests, nights) {
                         <h3 class="price">$${calcDays() * option.unitPrice} | $${option.unitPrice} per night</h3>
                         <h3 class="meals">${option.mealsAvailable}</h3>
                     </div>
-                    <button class="button">Book now!</button>
+                    <button class="more-info-button button" value="${option.id}">More info!</button>
                 </div>
             </div>`;
 }
