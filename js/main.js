@@ -277,11 +277,11 @@ function injectModalHTML(selectedOptionId) {
                             <div class="columns">
                                 <div class="column is-half">
                                     <h2 class="title">${selectedOption.name}</h2>
-                                    <h3 class="location-type">${selectedOption.location} | ${selectedOption.type}</h3>
+                                    <span class="info-item location-type"><i class="fas fa-map-marker-alt"></i><h3>${selectedOption.location} | ${selectedOption.type}</h3></span>
                                     <div class="info">
-                                        <h3 class="guests">${noOfGuestsEl.val()} ${states[0]} | ${calcDays()} ${states[1]}</h3>
-                                        <h3 class="meals">${selectedOption.mealsAvailable}</h3>
-                                        <h3 class="price">$${calcDays() * selectedOption.unitPrice} | $${selectedOption.unitPrice} per night</h3>
+                                        <span class="info-item"><i class="fas fa-users"></i><h3 class="guests">${noOfGuestsEl.val()} ${states[0]} | ${calcDays()} ${states[1]}</h3></span>
+                                        <span class="info-item"><i class="fas fa-utensils"></i><h3 class="meals">${selectedOption.mealsAvailable}</h3></span>
+                                        <span class="info-item price"><i class="fas fa-dollar-sign"></i><h3>$${calcDays() * selectedOption.unitPrice} | $${selectedOption.unitPrice} per night</h3></span>
                                     </div>
                                 </div>
                                 <div class="column is-half">
@@ -412,14 +412,14 @@ function getAccommodationSummaryWithPlurals(option, guests, nights) {
                 <div class="option-container">
                     <div class="info">
                         <h2 class="title">${option.name}</h2>
-                        <h3 class="location-type">${option.location} | ${option.type}</h3>
-                        <h3 class="guests">${noOfGuestsEl.val()} ${guests} | ${calcDays()} ${nights}</h3>
-                        <h3 class="price">$${calcDays() * option.unitPrice} | $${option.unitPrice} per night</h3>
-                        <h3 class="meals">${option.mealsAvailable}</h3>
+                        <span class="info-item location-type"><i class="fas fa-map-marker-alt"></i><h3>${option.location} | ${option.type}</h3></span>
+                        <span class="info-item"><i class="fas fa-users"></i><h3 class="guests">${noOfGuestsEl.val()} ${guests} | ${calcDays()} ${nights}</h3></span>
+                        <span class="info-item"><i class="fas fa-utensils"></i><h3 class="meals">${option.mealsAvailable}</h3></span>
+                        <span class="info-item"><i class="fas fa-dollar-sign"></i><h3 class="price">$${calcDays() * option.unitPrice} | $${option.unitPrice} per night</h3></span>
                     </div>
                     <button class="more-info-button button" value="${option.id}">More info!</button>
                 </div>
             </div>`;
-}
+};
 
 init();

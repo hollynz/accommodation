@@ -15,6 +15,7 @@
         cursor: pointer;
     }
     .option {
+        overflow: auto;
         display: flex;
         flex-direction: column;
         background: white;
@@ -25,14 +26,38 @@
             margin-bottom: 4%;
             color: $black;
         }
-        .location-type {
-            font-size: 110%;
-            color: $darkred;
+        .info-item {
+            display: flex;
+            align-items: center;
         }
-        .price {
-            font-size: 150%;
-            margin-top: 4%;
-            color: $darkred;
+        .fas {
+            color: black;
+            margin-right: 2%;
+            font-size: 1.2em;
+        }
+        .fa-users {
+            margin-right: 3%;
+        }
+        .fa-dollar-sign {
+            margin-right: 6%;
+        }
+        .fa-utensils {
+            margin-right: 6%;
+        }
+        .location-type {
+            * {
+                color: $brand-red;
+                font-size: 110%;
+            }
+            .fa-map-marker-alt {
+                margin-right: 5%;
+                font-size: 135%;
+            }
+        }
+        .price * {
+                font-size: 150%;
+                margin-top: 4%;
+                color: $brand-red;
         }
         hr {
             background: $brand-red;
@@ -42,4 +67,3 @@
         }
     }
 }
-

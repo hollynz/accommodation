@@ -78,16 +78,40 @@
                         color: black;
                         margin-top: 0;
                     }
-                    
-                    .location-type {
-                        color: $brand-red;
+                    .info-item {
+                        display: flex;
                     }
                     h3 {
                         font-weight: 400;
                         margin-top: 0;
                     }
+                    .fas {
+                        font-size: 1.2em;
+                        color: black;
+                        margin-right: 2%;
+                    }
+                    .fa-users {
+                        margin-right: 2%;
+                    }
+                    .fa-dollar-sign {
+                        margin-right: 5%;
+                    }
+                    .fa-utensils {
+                        margin-right: 4%;
+                    }
+                    .location-type {
+                        * {
+                            color: $brand-red;
+                        }
+                        .fas {
+                            font-size: 1.8em;
+                        }
+                    }
                     .guests, .price, .meals {
-                        font-size: 96%;
+                        font-size: 1em;
+                    }
+                    .price, .fa-dollar-sign {
+                        font-size: 1.3em;
                     }
                 }
                 .button {

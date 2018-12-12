@@ -530,8 +530,10 @@ body {
   margin-top: 0;
 }
 
-.summaryScreen .summary-container .summary-content-container .option .info .location-type {
-  color: rgba(185, 17, 17, 0.8);
+.summaryScreen .summary-container .summary-content-container .option .info .info-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .summaryScreen .summary-container .summary-content-container .option .info h3 {
@@ -539,8 +541,38 @@ body {
   margin-top: 0;
 }
 
+.summaryScreen .summary-container .summary-content-container .option .info .fas {
+  font-size: 1.2em;
+  color: black;
+  margin-right: 2%;
+}
+
+.summaryScreen .summary-container .summary-content-container .option .info .fa-users {
+  margin-right: 2%;
+}
+
+.summaryScreen .summary-container .summary-content-container .option .info .fa-dollar-sign {
+  margin-right: 5%;
+}
+
+.summaryScreen .summary-container .summary-content-container .option .info .fa-utensils {
+  margin-right: 4%;
+}
+
+.summaryScreen .summary-container .summary-content-container .option .info .location-type * {
+  color: rgba(185, 17, 17, 0.8);
+}
+
+.summaryScreen .summary-container .summary-content-container .option .info .location-type .fas {
+  font-size: 1.8em;
+}
+
 .summaryScreen .summary-container .summary-content-container .option .info .guests, .summaryScreen .summary-container .summary-content-container .option .info .price, .summaryScreen .summary-container .summary-content-container .option .info .meals {
-  font-size: 96%;
+  font-size: 1em;
+}
+
+.summaryScreen .summary-container .summary-content-container .option .info .price, .summaryScreen .summary-container .summary-content-container .option .info .fa-dollar-sign {
+  font-size: 1.3em;
 }
 
 .summaryScreen .summary-container .summary-content-container .option .button {
@@ -577,6 +609,7 @@ body {
 }
 
 .modal .option {
+  overflow: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -595,15 +628,47 @@ body {
   color: #000;
 }
 
-.modal .option .location-type {
-  font-size: 110%;
-  color: darkred;
+.modal .option .info-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.modal .option .price {
+.modal .option .fas {
+  color: black;
+  margin-right: 2%;
+  font-size: 1.2em;
+}
+
+.modal .option .fa-users {
+  margin-right: 3%;
+}
+
+.modal .option .fa-dollar-sign {
+  margin-right: 6%;
+}
+
+.modal .option .fa-utensils {
+  margin-right: 6%;
+}
+
+.modal .option .location-type * {
+  color: rgba(185, 17, 17, 0.8);
+  font-size: 110%;
+}
+
+.modal .option .location-type .fa-map-marker-alt {
+  margin-right: 5%;
+  font-size: 135%;
+}
+
+.modal .option .price * {
   font-size: 150%;
   margin-top: 4%;
-  color: darkred;
+  color: rgba(185, 17, 17, 0.8);
 }
 
 .modal .option hr {
