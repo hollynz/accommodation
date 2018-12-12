@@ -36,16 +36,18 @@
         }
         .summary-content-container {
             background: white;
-            max-width: 90%;
+            width: 90%;
             margin: auto;
-            margin-top: 2%;
-            padding: 4%;
+            padding: 5%;
             display: flex;
+            align-content: space-between;
             flex-wrap: wrap;
             border-radius: $border-radius-large;
             .option {
-                flex-basis: 1;
-                width: 250px;
+                // flex-basis: 1;
+                min-height: 90%;
+                // Media query for width so options stay inline!
+                width: 300px;
                 margin: auto;
                 display: inline-flex;
                 flex-direction: column;
