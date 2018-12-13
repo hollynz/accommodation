@@ -21,4 +21,7 @@
 
 .navbar > .container {
     width: 70%;
+    @include tablet {
+        display: flex;
+    }
 }

@@ -464,7 +464,8 @@ body {
   background: white;
   width: 90%;
   margin: auto;
-  padding: 5%;
+  padding: 0 5%;
+  padding-bottom: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -479,6 +480,7 @@ body {
   min-height: 90%;
   width: 300px;
   margin: auto;
+  margin-top: 50px;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;

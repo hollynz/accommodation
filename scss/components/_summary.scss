@@ -42,17 +42,17 @@
             background: white;
             width: 90%;
             margin: auto;
-            padding: 5%;
+            padding: 0 5%;
+            padding-bottom: 50px;
             display: flex;
             align-content: space-between;
             flex-wrap: wrap;
             border-radius: $border-radius-large;
             .option {
-                // flex-basis: 1;
                 min-height: 90%;
-                // Media query for width so options stay inline!
                 width: 300px;
                 margin: auto;
+                margin-top: 50px;
                 display: inline-flex;
                 flex-direction: column;
                 justify-content: center;
