@@ -1,27 +1,21 @@
+// Import Bulma variables
 @import '../../node_modules/bulma/sass/utilities/initial-variables.sass';
+
 // Colours
 $black: #000;
 $white: #fff;
-$black-transp: rgba(0, 0, 0, 0.4);
 $brand-red: rgba(185, 17, 17, 0.8);
-$brand-red-opaque: rgba(179, 23, 23, 0.905);
-$brand-yellow: rgb(255, 216, 62);
-$brand-yellow-trans: rgba(255, 194, 62, 0.529);
 $darkred: darkred;
+$brand-yellow: rgb(255, 216, 62);
 $placeholder-color: rgba(54, 54, 54, 0.3);
 
 // Units
 $full: 100%;
-$height-full: 100vh;
-$height-half: 50vh;
-$height-quarter: 25vh;
 $height-15: 15vh;
-$height-60: 60vh;
-$height-80: 80vh;
-$width-full: 100vw;
-$width-80: 80vw;
 $border-radius-small: 4px;
 $border-radius-large: 10px;
 
 // Custom breakpoints
 $nav-bp: 1087px;
+$form-desktop-bp: 1400px;
+$summary-header-bp: 700px;

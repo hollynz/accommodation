@@ -1,11 +1,9 @@
 .modal {
-    // font-family: 'Noto Sans', sans-serif;
     color: $black;
     padding: 2%;
     background: $darkred;
     .modal-close {
         position: absolute;
-        // z-index: 1;
         top: 10px;
         right: 20px;
         border: 0;
@@ -18,7 +16,7 @@
         overflow: auto;
         display: flex;
         flex-direction: column;
-        background: white;
+        background: $white;
         height: auto;
         padding: 6%;
         border-radius: $border-radius-large;
@@ -31,7 +29,7 @@
             align-items: center;
         }
         .fas {
-            color: black;
+            color: $black;
             margin-right: 2%;
             font-size: 1.2em;
         }

@@ -2,7 +2,7 @@ body {
   font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
-.content .blurb {
+.content .landing-blurb, .content .summary-blurb {
   font-family: 'Josefin Sans', sans-serif;
   color: #ffd83e;
   text-align: center;
@@ -10,15 +10,15 @@ body {
 }
 
 @media (max-width: 1800px) {
-  .content .blurb {
+  .content .landing-blurb {
     color: rgba(185, 17, 17, 0.8);
   }
 }
 
 @media (max-width: 769px) {
-  .content .blurb {
+  .content .landing-blurb {
     font-size: 1.8em;
-    margin-bottom: 10%;
+    margin-bottom: 6%;
   }
 }
 
@@ -128,6 +128,19 @@ body {
           justify-content: space-evenly;
 }
 
+@media (max-width: 1400px) {
+  .form-container {
+    width: 40%;
+  }
+}
+
+@media (max-width: 769px) {
+  .form-container {
+    width: 70%;
+    padding: 6%;
+  }
+}
+
 .form-container .form-container-top {
   -ms-flex-item-align: center;
       align-self: center;
@@ -162,6 +175,12 @@ body {
   overflow: hidden;
 }
 
+@media (max-width: 1400px) {
+  .form-container form {
+    height: 18vh;
+  }
+}
+
 .form-container form .input-container {
   position: relative;
   width: 4000px;
@@ -194,10 +213,23 @@ body {
   margin: 0 12%;
 }
 
+@media (max-width: 1400px) {
+  .form-container form .input-container .inputs {
+    width: 100%;
+    margin: 0;
+  }
+}
+
 .form-container form .input-container .input {
   width: 15vw;
   margin: 2% auto;
   font-size: 1.6em;
+}
+
+@media (max-width: 1400px) {
+  .form-container form .input-container .input {
+    width: 60%;
+  }
 }
 
 .form-container form .input-container input[type=number]::-webkit-inner-spin-button,
@@ -223,20 +255,9 @@ body {
   padding-top: 8%;
 }
 
-.form-container form .input-container .where-input .input {
-  max-width: 20vw;
-  width: 20vw;
-}
-
 .form-container form .input-container .where-input .icon {
   height: 1.8em;
   font-size: 1.6em;
-}
-
-.form-container form .input-container .where-input .map {
-  width: 20vw;
-  height: 100%;
-  border-radius: 4px;
 }
 
 .form-container form .input-container .where-input .map {
@@ -251,6 +272,13 @@ body {
   width: 100%;
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+
+@media (max-width: 1400px) {
+  .form-container form .input-container .where-input .leaflet-control-geosearch {
+    margin-left: 4%;
+    width: 80%;
+  }
 }
 
 .form-container form .input-container .where-input .leaflet-control-geosearch .leaflet-bar-part, .form-container form .input-container .where-input .leaflet-control-geosearch .reset {
@@ -290,6 +318,12 @@ body {
   padding-bottom: 2px;
 }
 
+@media (max-width: 1400px) {
+  .form-container form .input-container .where-input .leaflet-control-geosearch form {
+    width: 80%;
+  }
+}
+
 .form-container form .input-container .where-input .leaflet-control-geosearch form input {
   font-size: 0.8em;
   color: rgba(54, 54, 54, 0.3);
@@ -298,7 +332,7 @@ body {
 .form-container form .input-container .where-input .leaflet-control-geosearch form .glass {
   padding: 1.25em 0;
   color: rgba(54, 54, 54, 0.3);
-  color: black;
+  color: #000;
 }
 
 .form-container form .input-container .where-input .leaflet-control-geosearch .fas {
@@ -307,7 +341,7 @@ body {
 
 .form-container form .input-container .where-input .leaflet-control-geosearch .results {
   padding-bottom: 5em;
-  color: black;
+  color: #000;
   font-size: 0.6em;
 }
 
@@ -322,7 +356,19 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding-top: 10%;
+}
+
+.form-container form .input-container .who-input .level {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .form-container form .input-container .who-input .input {
@@ -344,48 +390,19 @@ body {
   color: #ffd83e;
 }
 
-.form-container form .input-container .what-input {
-  left: 1200px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+@media (max-width: 1400px) {
+  .form-container form .input-container .who-input {
+    width: 100%;
+    padding-left: 15%;
+    padding-right: 15%;
+  }
 }
 
-.form-container form .input-container .what-input .button {
-  width: 100%;
-  font-size: 1.5em;
-  text-align: left;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  position: relative;
-}
-
-.form-container form .input-container .what-input .button .fas {
-  margin-right: 8%;
-}
-
-.form-container form .input-container .what-input .button span {
-  position: absolute;
-  left: 25%;
-}
-
-.form-container form .input-container .what-input .button .far {
-  text-align: right;
-  color: #ffd83e;
+@media (max-width: 400px) {
+  .form-container form .input-container .who-input {
+    padding-left: 8%;
+    padding-right: 8%;
+  }
 }
 
 .form-container .input-nav {
@@ -437,7 +454,7 @@ body {
 }
 
 .summaryScreen .no-bookings h2 {
-  color: white;
+  color: #fff;
   font-weight: 400;
 }
 
@@ -498,25 +515,25 @@ body {
   }
 }
 
-.summaryScreen .summary-container .blurb {
+.summaryScreen .summary-container .summary-blurb {
   margin-top: 0.5em;
   margin-bottom: 0.8em;
 }
 
 @media (max-width: 769px) {
-  .summaryScreen .summary-container .blurb {
+  .summaryScreen .summary-container .summary-blurb {
     margin-top: 0.8em;
   }
 }
 
 @media (max-width: 700px) {
-  .summaryScreen .summary-container .blurb {
+  .summaryScreen .summary-container .summary-blurb {
     font-size: 2em;
   }
 }
 
 .summaryScreen .summary-container .summary-content-container {
-  background: white;
+  background: #fff;
   width: 90%;
   margin: auto;
   padding: 0 5%;
@@ -583,7 +600,7 @@ body {
 }
 
 .summaryScreen .summary-container .summary-content-container .option .info .title {
-  color: black;
+  color: #000;
   margin-top: 0;
 }
 
@@ -600,7 +617,7 @@ body {
 
 .summaryScreen .summary-container .summary-content-container .option .info .fas {
   font-size: 1.2em;
-  color: black;
+  color: #000;
   margin-right: 2%;
 }
 
@@ -687,7 +704,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background: white;
+  background: #fff;
   height: auto;
   padding: 6%;
   border-radius: 10px;
@@ -708,7 +725,7 @@ body {
 }
 
 .modal .option .fas {
-  color: black;
+  color: #000;
   margin-right: 2%;
   font-size: 1.2em;
 }

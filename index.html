@@ -24,7 +24,8 @@
     <link href="https://unpkg.com/leaflet-geosearch@latest/assets/css/leaflet.css" rel="stylesheet" />
     <!-- Google fonts: https://fonts.google.com/ -->
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">    <!-- Izimodal jQuery modal plugin: http://izimodal.marcelodolce.com/#modal-default -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">    
+    <!-- Izimodal jQuery modal plugin: http://izimodal.marcelodolce.com/#modal-default -->
     <link rel="stylesheet" href="node_modules/izimodal/css/iziModal.min.css">
     <!-- jQuery datepicker plugin: https://www.jqueryscript.net/time-clock/Highly-Customizable-jQuery-Datepicker-Plugin-Datepicker.html -->
     <link rel="stylesheet" href="node_modules/@chenfengyuan/datepicker/dist/datepicker.min.css">
@@ -36,11 +37,8 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-
-
-
     <main id="content" class="content">
-        <h1 id="blurb" class="blurb">Short-term stays in New Zealand</h1>
+        <h1 id="blurb" class="landing-blurb">Short-term stays in New Zealand</h1>
         <div id="userInputScreen" class="screen userInputScreen active">
             <div class="background-level level">
                 <div class="form-container">
@@ -89,7 +87,7 @@
                     <div class="input-nav level">
                         <i id="leftArrow" class="fas fa-chevron-circle-left"></i>
                         <a id="inputNavBtn" class="button input-nav-button" href="index.html">
-                            Start Over
+                            <span>Start Over </span><i class="fas fa-redo-alt"></i>
                         </a>
                         <i id="rightArrow" class="fas fa-chevron-circle-right"></i>
                         <i id="finishButton" class="fas fa-check-circle"></i>
@@ -115,7 +113,7 @@
                 <a id="summaryLogo" class="summary-logo" href="index.html">
                     <img src="img/client-logo-site.png" alt="All Abroad">
                 </a>
-                <h1 id="summaryBlurb" class="blurb">Explore your accommodation options</h1>
+                <h1 id="summaryBlurb" class="summary-blurb">Explore your accommodation options</h1>
                 <!-- If no bookings available -->
                 <div id="noBookings" class="no-bookings hidden">
                     <h2>Sorry, no options available!</h2>

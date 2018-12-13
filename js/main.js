@@ -46,7 +46,6 @@ function init() {
     $.getJSON('json/accommodation.json', function (options) {
         accommData = options.accommodation;
     });
-    // Datepicker: FIX the past date issue!!!
     $('[data-toggle="datepicker"]').datepicker({
         isDisabled: function (date) {
             return date.valueOf() < currDate ? true : false;
@@ -98,7 +97,7 @@ function slideInputContainerBackwards() {
 };
 
 /**
- * Checks whether the input form state is the first field.
+ * Checks whether the state of the input form is the first field and toggles navigation elements to match.
  */
 function checkInputIsStart() {
     if (currInputScreen == 0) {
@@ -112,7 +111,7 @@ function checkInputIsStart() {
 };
 
 /**
- * Checks whether the input form state is the final field.
+ * Checks whether the state of the input form is the final field and toggles navigation elements to match.
  */
 function checkInputIsEnd() {
     if (currInputScreen == 2) {
@@ -128,7 +127,6 @@ function checkInputIsEnd() {
  * Sets up the location (search) functionality.
  */
 function setUpMap() {
-    // Map variables
     var GeoSearchControl = window.GeoSearch.GeoSearchControl,
         OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider,
         provider = new OpenStreetMapProvider(),
@@ -137,22 +135,16 @@ function setUpMap() {
             id: 'mapbox.streets',
             accessToken: 'pk.eyJ1IjoiaG9sbHlqbnoiLCJhIjoiY2pvbnBuc2ZhMWVkYzNqcGNvNnBjeDI2aiJ9.esIDISrS1QjPynfQs4sKKA'
         });
-    var map = L.map('map', {
-        center: [-40.9, 173],
-        zoom: 4,
-        layers: baseMap
-    });
+    var map = L.map('map');
     var searchControl = new GeoSearchControl({
         provider: provider,
     });
     searchControl.addTo(map);
-
     var htmlObject = searchControl.getContainer();
     function setParent(el, newParent) {
         newParent.append(el);
     }
     setParent(htmlObject, whereInputEl);
-
     // Geosearch input
     var leafletBarPartEl = $('.leaflet-bar-part'),
         geosearchFormEl = $('.geosearch form'),
@@ -160,12 +152,10 @@ function setUpMap() {
         geosearchGlassEl = $('.geosearch .glass'),
         geosearchGlassContentEl = $('.geosearch .glass div'),
         geosearchResultsEl = $('.geosearch .results');
-
     // Deal with html/styling
     leafletBarPartEl.html('<i class="fas fa-search"></i>');
     geosearchResetEl.html('<i class="fas fa-redo-alt"></i>');
     geosearchGlassEl.attr("placeholder", "Enter town/city");
-
     // Deal with user input/selection
     geosearchGlassEl.on('click', function () {
         geosearchFormEl.css('height', '25vh').css('overflow-y', 'scroll');
@@ -180,9 +170,6 @@ function setUpMap() {
         geosearchFormEl.removeClass('active');
         resetForm();
     });
-    // geosearchFormEl.on('blur', function () {
-    //     geosearchGlassContentEl.on('blur', resetForm);
-    // });
     function resetForm() {
         geosearchFormEl.css('height', '2em').css('overflow-y', 'hidden');
     };
@@ -201,15 +188,15 @@ function increaseNoOfGuests() {
  * Decreases the value of number of guests input.
  */
 function decreaseNoOfGuests() {
-    if (!(noOfGuestsEl.val() == 0)) {
+    if (noOfGuestsEl.val() != 0) {
         noOfGuestsEl.val(function (i, prev) {
             return --prev;
         });
-    }
+    };
 };
 
 /**
- * Checks whether the number of guests is valid and resets if not.
+ * Checks whether the number of guests is valid (greater than zero and an integer) and resets if not.
  */
 function checkWhoInput() {
     let guests = noOfGuestsEl.val();
@@ -219,7 +206,7 @@ function checkWhoInput() {
 };
 
 /**
- * Changes screen to show summary.
+ * Determines whether user entered required inputs; finds available accommodtion options on basis of user inputs; sets up modal dialog.
  */
 function showSummary() {
     let dateRegex = /([0-2][0-9]|[3][0-1])\/([0-9][1-2])\/((19|20)[0-9]{2})/,
@@ -256,18 +243,26 @@ function showSummary() {
     };
 };
 
+/**
+ * Display modal for user-selected accommodation option.
+* @param {event}
+    */
 function showModal(event) {
     event.preventDefault();
     var selectedOptionId = $(event.target).val();
-    injectModalHTML(selectedOptionId);
+    setModalHTML(selectedOptionId);
     setTimeout(function () {
         var modalOptionHeight = parseInt($('#modalOption').css('height').slice(0, -2));
         modalEl.css('height', `${modalOptionHeight*1.2}px`).css('display', 'flex');
         $('#modalOption').css('align-self', 'center');
     }, 50);
-}
+};
 
-function injectModalHTML(selectedOptionId) {
+/**
+ * Sets HTML for modal given the ID for the user-selected accommodation option.
+* @param {String} selectedOptionId
+    */
+function setModalHTML(selectedOptionId) {
     var selectedOption = getSelectedOption(selectedOptionId);
     var states = getPluralStates();
     modalEl.html(`<button class="modal-close" data-izimodal-close="">
@@ -299,6 +294,11 @@ function injectModalHTML(selectedOptionId) {
                     </div>`);
 };
 
+/**
+ * Gets the object for the user-selected accommodation option by ID.
+* @param {String} selectedOptionId
+* @returns {Object} selectedOption
+    */
 function getSelectedOption(selectedOptionId) {
     var selectedOption;
     $.each(accommData, function (i, option) {
@@ -315,7 +315,6 @@ function getSelectedOption(selectedOptionId) {
  */
 function backToForm() {
     filteredAccommodation = [];
-    // Instead: set hide and show class on content so it doesn't recreate it every time!!!!!!!
     summaryScreenContentContainerEl.html('');
     summaryScreenContentContainerEl.addClass('hidden');
     userInputScreenEl.addClass('active');
@@ -326,7 +325,7 @@ function backToForm() {
 };
 
 /**
- * Changes screen to return to user input form.
+ * Filters all accommodation options according to user inputs.
 * @returns {Array} filteredAccommodation
     */
 function filterByUserInput() {
@@ -373,7 +372,7 @@ function setUpGrid(filteredAccommodation) {
 };
 
 /**
- * Get the summary HTML for the accommodation options.
+ * Gets the summary HTML for the accommodation options.
 * @param {Object} option
 * @returns {String}
     */
@@ -382,6 +381,10 @@ function getAccommodationSummaryHTML(option) {
     return getAccommodationSummaryWithPlurals(option, states[0], states[1]);
 };
 
+/**
+ * Determines which of "guests"/"guest" and "nights"/"night" should be displayed.
+* @returns {Array} [guest, night]
+    */
 function getPluralStates() {
     let guest = 'guest',
         guests = 'guests',
@@ -397,7 +400,7 @@ function getPluralStates() {
 }
 
 /**
- * Get the summary HTML for the accommodation options on the basis of whether the guests and days are plural or not.
+ * Get the summary HTML for the accommodation options according to which of "guests"/"guest" and "nights"/"night" should be displayed.
 * @param {Object} option
 * @param {number} guests
 * @param {number} nights

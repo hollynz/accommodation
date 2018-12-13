@@ -5,20 +5,6 @@
     }
 }
 
-// Desktop devices
-@mixin desktop {
-    @media (max-width: #{$desktop}){
-        @content;
-    }
-}
-
-// Widescreen devices
-@mixin widescreen {
-    @media (max-width: #{$widescreen}){
-        @content;
-    }
-}
-
 // Custom breakpoints
 @mixin custom($bp){
     @media (max-width: #{$bp}){
