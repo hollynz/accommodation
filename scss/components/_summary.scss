@@ -1,9 +1,17 @@
 .summaryScreen {
     .no-bookings {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-self: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -ms-flex-item-align: center;
+            align-self: center;
         margin-top: 4%;
         h2 {
             color: $white;
@@ -18,11 +26,19 @@
         margin: auto;
         margin-top: 5%;
         width: 80%;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        align-content: space-between;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
+        -ms-flex-line-pack: justify;
+            align-content: space-between;
         color: $white;
         background: $brand-red;
         padding: 3%;
@@ -30,9 +46,15 @@
         .summary-logo {
             z-index: 100;
             max-width: 15%;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
             margin: 0 auto;
             @include custom ($summary-header-bp) {
                 margin-top: 5rem;
@@ -58,42 +80,67 @@
             width: 90%;
             margin: auto;
             padding: 0 5%;
-            padding-bottom: 50px;
+            padding-bottom: $summary-option-wrap-margin;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            align-content: space-between;
-            flex-wrap: wrap;
+            -ms-flex-line-pack: justify;
+                align-content: space-between;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
             border-radius: $border-radius-large;
             .option {
                 min-height: 90%;
                 width: 300px;
                 margin: auto;
-                margin-top: 50px;
+                margin-top: $summary-option-wrap-margin;
+                padding: 1%;
+                display: -webkit-inline-box;
+                display: -ms-inline-flexbox;
                 display: inline-flex;
-                flex-direction: column;
-                justify-content: center;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                    -ms-flex-direction: column;
+                        flex-direction: column;
+                -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                        justify-content: center;
                 border-radius: $border-radius-small;
                 .option-container {
                     width: 90%;
                     margin: auto;
+                    display: -webkit-box;
+                    display: -ms-flexbox;
                     display: flex;
-                    flex-direction: column;
-                    justify-content: flex-start;
+                    -webkit-box-orient: vertical;
+                    -webkit-box-direction: normal;
+                        -ms-flex-direction: column;
+                            flex-direction: column;
+                    -webkit-box-pack: start;
+                        -ms-flex-pack: start;
+                            justify-content: flex-start;
                     font-size: 80%;
                 }
                 img {
                     max-width: 100%;
-                    align-self: center;
+                    -ms-flex-item-align: center;
+                        -ms-grid-row-align: center;
+                        align-self: center;
                 }
                 hr {
                     background-color: $brand-red;
                 }
                 .info {
-                    justify-content: center;
+                    -webkit-box-pack: center;
+                        -ms-flex-pack: center;
+                            justify-content: center;
                     .title {
                         color: $black;
                         margin-top: 0;
                     }
                     .info-item {
+                        display: -webkit-box;
+                        display: -ms-flexbox;
                         display: flex;
                     }
                     h3 {
@@ -132,7 +179,8 @@
                 .button {
                     margin-top: 4%;
                     width: 40%;
-                    align-self: flex-end;
+                    -ms-flex-item-align: end;
+                        align-self: flex-end;
                     @include custom(500px) {
                         font-size: 1.4em;
                         width: 60%

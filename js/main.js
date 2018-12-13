@@ -1,13 +1,10 @@
 // DOM Elements
 let bodyEl = $('body'),
     navbarEl = $('#navbar'),
-    datepickerInputEl = $('[data-toggle="datepicker"]'),
     dateFromEl = $('#dateFrom'),
     dateToEl = $('#dateTo'),
-    inputContainerEl = $('#inputContainer'),
     userInputScreenEl = $('#userInputScreen'),
     summaryScreenEl = $('#summaryScreen'),
-    summaryScreenContainerEl = $('#summaryContainer'),
     summaryScreenContentContainerEl = $('#summaryContentContainer'),
     inputTitleEl = $('#inputTitle'),
     leftArrowEl = $('#leftArrow'),
@@ -22,11 +19,9 @@ let bodyEl = $('body'),
     fewerGuestsEl = $('#fewerGuests'),
     whatInputEl = $('#whatInput'),
     backToFormBtnEl = $('#backToFormBtn'),
-    contentEl = $('#content'),
     blurbEl = $('#blurb'),
     noBookingsEl = $('#noBookings'),
-    modalEl = $('#modal'),
-    modalCloseBtnEl = $('.modal-overlay-close');
+    modalEl = $('#modal');
 
 // Data
 let accommData,
@@ -66,7 +61,7 @@ function init() {
     $('.geosearch .results').on('click', function (e) {
         selectedLocation = $(e.target).text();
     });
-};
+}
 
 /**
  * Slides user input container forwards for each field.
@@ -80,7 +75,7 @@ function slideInputContainerForwards() {
     whereInputEl.animate({ left: '-=400px' });
     whoInputEl.animate({ left: '-=400px' });
     whatInputEl.animate({ left: '-=400px' });
-};
+}
 
 /**
  * Slides user input container backwards for each field.
@@ -94,7 +89,7 @@ function slideInputContainerBackwards() {
     whereInputEl.animate({ left: '+=400px' });
     whoInputEl.animate({ left: '+=400px' });
     whatInputEl.animate({ left: '+=400px' });
-};
+}
 
 /**
  * Checks whether the state of the input form is the first field and toggles navigation elements to match.
@@ -108,7 +103,7 @@ function checkInputIsStart() {
         leftArrowEl.css("display", "block");
         leftArrowEl.css("visibility", "visible");
     }
-};
+}
 
 /**
  * Checks whether the state of the input form is the final field and toggles navigation elements to match.
@@ -121,7 +116,7 @@ function checkInputIsEnd() {
         finishButtonEl.css('display', 'none');
         rightArrowEl.css('display', 'block');
     }
-};
+}
 
 /**
  * Sets up the location (search) functionality.
@@ -130,27 +125,18 @@ function setUpMap() {
     var GeoSearchControl = window.GeoSearch.GeoSearchControl,
         OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider,
         provider = new OpenStreetMapProvider(),
-        baseMap = new L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            id: 'mapbox.streets',
-            accessToken: 'pk.eyJ1IjoiaG9sbHlqbnoiLCJhIjoiY2pvbnBuc2ZhMWVkYzNqcGNvNnBjeDI2aiJ9.esIDISrS1QjPynfQs4sKKA'
+        map = L.map('map'),
+        searchControl = new GeoSearchControl({
+            provider: provider,
         });
-    var map = L.map('map');
-    var searchControl = new GeoSearchControl({
-        provider: provider,
-    });
     searchControl.addTo(map);
     var htmlObject = searchControl.getContainer();
-    function setParent(el, newParent) {
-        newParent.append(el);
-    }
     setParent(htmlObject, whereInputEl);
     // Geosearch input
     var leafletBarPartEl = $('.leaflet-bar-part'),
         geosearchFormEl = $('.geosearch form'),
         geosearchResetEl = $('.geosearch .reset'),
         geosearchGlassEl = $('.geosearch .glass'),
-        geosearchGlassContentEl = $('.geosearch .glass div'),
         geosearchResultsEl = $('.geosearch .results');
     // Deal with html/styling
     leafletBarPartEl.html('<i class="fas fa-search"></i>');
@@ -172,8 +158,18 @@ function setUpMap() {
     });
     function resetForm() {
         geosearchFormEl.css('height', '2em').css('overflow-y', 'hidden');
-    };
-};
+    }
+}
+
+/**
+ * Appends given element to a new parent element.
+ * @param {Element} el 
+ * @param {Element} newParent 
+ */
+function setParent(el, newParent) {
+    console.log(typeof el + " " + typeof newParent);
+    newParent.append(el);
+}
 
 /**
  * Increases the value of number of guests input.
@@ -182,7 +178,7 @@ function increaseNoOfGuests() {
     noOfGuestsEl.val(function (i, prev) {
         return ++prev;
     });
-};
+}
 
 /**
  * Decreases the value of number of guests input.
@@ -192,8 +188,8 @@ function decreaseNoOfGuests() {
         noOfGuestsEl.val(function (i, prev) {
             return --prev;
         });
-    };
-};
+    }
+}
 
 /**
  * Checks whether the number of guests is valid (greater than zero and an integer) and resets if not.
@@ -202,8 +198,8 @@ function checkWhoInput() {
     let guests = noOfGuestsEl.val();
     if (guests < 0 || !(Math.floor(guests) == guests && $.isNumeric(guests))) {
         noOfGuestsEl.val('0');
-    };
-};
+    }
+}
 
 /**
  * Determines whether user entered required inputs; finds available accommodtion options on basis of user inputs; sets up modal dialog.
@@ -240,8 +236,8 @@ function showSummary() {
             showModal(event);
             modalEl.iziModal('open');
         });
-    };
-};
+    }
+}
 
 /**
  * Display modal for user-selected accommodation option.
@@ -256,7 +252,7 @@ function showModal(event) {
         modalEl.css('height', `${modalOptionHeight*1.2}px`).css('display', 'flex');
         $('#modalOption').css('align-self', 'center');
     }, 50);
-};
+}
 
 /**
  * Sets HTML for modal given the ID for the user-selected accommodation option.
@@ -292,7 +288,7 @@ function setModalHTML(selectedOptionId) {
                             <button class="button">Book now!</button>
                         </a>
                     </div>`);
-};
+}
 
 /**
  * Gets the object for the user-selected accommodation option by ID.
@@ -302,13 +298,13 @@ function setModalHTML(selectedOptionId) {
 function getSelectedOption(selectedOptionId) {
     var selectedOption;
     $.each(accommData, function (i, option) {
-        if (accommData[i].id === parseInt(selectedOptionId)) {
+        if (option.id === parseInt(selectedOptionId)) {
             selectedOption = accommData[i];
             return false;
-        };
+        }
     });
     return selectedOption;
-};
+}
 
 /**
  * Changes screen to return to user input form.
@@ -322,7 +318,7 @@ function backToForm() {
     bodyEl.css('background-image', 'url(../../img/sunrise2.JPG)');
     navbarEl.css('visibility', 'hidden');
     blurbEl.removeClass('hidden');
-};
+}
 
 /**
  * Filters all accommodation options according to user inputs.
@@ -336,7 +332,7 @@ function filterByUserInput() {
         return days <= option.maxNights && guests <= option.maxGuests && location == option.location;
     });
     return filteredAccommodation;
-};
+}
 
 /**
  * Calculates the number of days between user's selected dates.
@@ -349,7 +345,7 @@ function calcDays() {
     var difference = t2 - t1;
     var days = Math.floor(difference / (1000 * 60 * 60 * 24));
     return days;
-};
+}
 
 /**
  * Sets up the HTML grid for summary screen.
@@ -369,7 +365,7 @@ function setUpGrid(filteredAccommodation) {
         });
         summaryScreenContentContainerEl.html(htmlString);
     }
-};
+}
 
 /**
  * Gets the summary HTML for the accommodation options.
@@ -379,7 +375,7 @@ function setUpGrid(filteredAccommodation) {
 function getAccommodationSummaryHTML(option) {
     let states = getPluralStates();
     return getAccommodationSummaryWithPlurals(option, states[0], states[1]);
-};
+}
 
 /**
  * Determines which of "guests"/"guest" and "nights"/"night" should be displayed.
@@ -423,6 +419,6 @@ function getAccommodationSummaryWithPlurals(option, guests, nights) {
                     <button class="more-info-button button" value="${option.id}">More info!</button>
                 </div>
             </div>`;
-};
+}
 
 init();

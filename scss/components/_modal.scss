@@ -2,6 +2,9 @@
     color: $black;
     padding: 2%;
     background: $darkred;
+    @include tablet {
+        padding: 10%;
+    }
     .modal-close {
         position: absolute;
         top: 10px;
@@ -14,8 +17,13 @@
     }
     .option {
         overflow: auto;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
         background: $white;
         height: auto;
         padding: 6%;
@@ -25,8 +33,12 @@
             color: $black;
         }
         .info-item {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            align-items: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
         }
         .fas {
             color: $black;
@@ -61,7 +73,11 @@
             background: $brand-red;
         }
         .booking-button {
-            align-self: flex-end;
+            -ms-flex-item-align: end;
+                align-self: flex-end;
+                @include custom(1100px) {
+                    margin-top: 4%;
+                }
         }
     }
 }

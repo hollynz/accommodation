@@ -5,9 +5,16 @@
     border-radius: $border-radius-large;
     padding: 2.5%;
     color: $white;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
     @include custom($form-desktop-bp) {
         width: 40%;
     }
@@ -16,12 +23,20 @@
         padding: 6%;
     }
     .form-container-top {
-        align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
         .logo, hr {
             width: 90%;
-            align-self: center;
+            -ms-flex-item-align: center;
+                -ms-grid-row-align: center;
+                align-self: center;
         }
         .logo {
             margin-top: 4%;
@@ -44,15 +59,27 @@
             width: 4000px;
             height: 100%;
             max-width: 100%;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                    flex-direction: row;
+            -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                    justify-content: space-between;
             .inputs {
                 height: 100%;
                 position: absolute;
                 float: left;
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
-                flex-direction: column;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                    -ms-flex-direction: column;
+                        flex-direction: column;
                 width: 15vw;
                 margin: 0 12%;
                 @include custom($form-desktop-bp) {
@@ -78,7 +105,8 @@
             }
             .when-input {
                 left: 0;
-                justify-content: space-around;                
+                -ms-flex-pack: distribute;
+                    justify-content: space-around;                
             }
             .where-input {
                 left: 400px;
@@ -94,9 +122,12 @@
                 }
                 .leaflet-control-geosearch {
                     margin-left: 15%;
-                    align-self: center;
+                    -ms-flex-item-align: center;
+                        -ms-grid-row-align: center;
+                        align-self: center;
                     width: 100%;
-                    box-shadow: none;
+                    -webkit-box-shadow: none;
+                            box-shadow: none;
                     @include custom($form-desktop-bp) {
                         margin-left: 4%;
                         width: 80%;
@@ -104,9 +135,15 @@
                     .leaflet-bar-part, .reset {
                         height: 2em;
                         width: 2em;
+                        display: -webkit-box;
+                        display: -ms-flexbox;
                         display: flex;
-                        justify-content: center;
-                        align-items: center;
+                        -webkit-box-pack: center;
+                            -ms-flex-pack: center;
+                                justify-content: center;
+                        -webkit-box-align: center;
+                            -ms-flex-align: center;
+                                align-items: center;
                         padding: 0;
                     }
                     .leaflet-bar-part:hover {
@@ -157,13 +194,20 @@
             .who-input {
                 width: 15vw;
                 left: 800px;
-                justify-content: flex-start;
-                align-items: center;
+                -webkit-box-pack: start;
+                    -ms-flex-pack: start;
+                        justify-content: flex-start;
+                -webkit-box-align: center;
+                    -ms-flex-align: center;
+                        align-items: center;
                 padding-top: 10%;
                 .level {
                     width: 90%;
+                    display: -webkit-box;
+                    display: -ms-flexbox;
                     display: flex;
-                    justify-content: space-around;
+                    -ms-flex-pack: distribute;
+                        justify-content: space-around;
                 }
                 .input {
                     text-align: center;
@@ -194,8 +238,12 @@
         }
     }
     .input-nav {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        justify-content: space-between;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
         margin-top: 8%;
         .fa-chevron-circle-right, .fa-chevron-circle-left, .fa-check-circle {
             color: $brand-yellow;
@@ -213,6 +261,9 @@
         }
         .input-nav-button {
             visibility: hidden;
+            .fa-redo-alt {
+                margin-left: 6%;
+            }
         }
     }
 }
