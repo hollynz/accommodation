@@ -28,15 +28,30 @@
         padding: 3%;
         border-radius: $border-radius-large;
         .summary-logo {
+            z-index: 100;
             max-width: 15%;
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 0 auto;
+            @include custom (700px) {
+                margin-top: 5rem;
+                max-width: 50%;
+            }
+            @include custom (700px) {
+                margin-top: 5.4rem;
+                max-width: 60%;
+            }
         }
         .blurb {
-            margin-top: 0.4em;
+            margin-top: 0.5em;
             margin-bottom: 0.8em;
+            @include tablet {
+                margin-top: 0.8em;
+            }
+            @include custom (700px) {
+                font-size: 2em;
+            }
         }
         .summary-content-container {
             background: white;
@@ -118,6 +133,13 @@
                     margin-top: 4%;
                     width: 40%;
                     align-self: flex-end;
+                    @include custom(500px) {
+                        font-size: 1.4em;
+                        width: 60%
+                    }
+                    @include custom(300px) {
+                        width: 80%;
+                    }
                 }
             }
         }

@@ -8,7 +8,11 @@ html, body {
     }
     .content {
         margin-top: 9%;
+        padding: auto 40%;
         padding-bottom: 100px;
+        @include tablet {
+            padding-top: 10%;
+        }
         .background-level {
             margin: $height-15 auto;
             margin-top: 0;

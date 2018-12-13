@@ -21,7 +21,7 @@
 
 .navbar > .container {
     width: 70%;
-    @include tablet {
+    @include custom ($nav-bp) {
         display: flex;
     }
 }

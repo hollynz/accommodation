@@ -9,6 +9,19 @@ body {
   font-size: 2.8em;
 }
 
+@media (max-width: 1800px) {
+  .content .blurb {
+    color: rgba(185, 17, 17, 0.8);
+  }
+}
+
+@media (max-width: 769px) {
+  .content .blurb {
+    font-size: 1.8em;
+    margin-bottom: 10%;
+  }
+}
+
 h2.title {
   color: #fff;
   font-size: 2em;
@@ -27,7 +40,14 @@ html .hidden, body .hidden {
 
 html .content, body .content {
   margin-top: 9%;
+  padding: auto 40%;
   padding-bottom: 100px;
+}
+
+@media (max-width: 769px) {
+  html .content, body .content {
+    padding-top: 10%;
+  }
 }
 
 html .content .background-level, body .content .background-level {
@@ -79,6 +99,14 @@ body {
 
 .navbar > .container {
   width: 70%;
+}
+
+@media (max-width: 1087px) {
+  .navbar > .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 
 .form-container {
@@ -442,6 +470,7 @@ body {
 }
 
 .summaryScreen .summary-container .summary-logo {
+  z-index: 100;
   max-width: 15%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -455,9 +484,35 @@ body {
   margin: 0 auto;
 }
 
+@media (max-width: 700px) {
+  .summaryScreen .summary-container .summary-logo {
+    margin-top: 5rem;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 700px) {
+  .summaryScreen .summary-container .summary-logo {
+    margin-top: 5.4rem;
+    max-width: 60%;
+  }
+}
+
 .summaryScreen .summary-container .blurb {
-  margin-top: 0.4em;
+  margin-top: 0.5em;
   margin-bottom: 0.8em;
+}
+
+@media (max-width: 769px) {
+  .summaryScreen .summary-container .blurb {
+    margin-top: 0.8em;
+  }
+}
+
+@media (max-width: 700px) {
+  .summaryScreen .summary-container .blurb {
+    font-size: 2em;
+  }
 }
 
 .summaryScreen .summary-container .summary-content-container {
@@ -582,6 +637,19 @@ body {
   width: 40%;
   -ms-flex-item-align: end;
       align-self: flex-end;
+}
+
+@media (max-width: 500px) {
+  .summaryScreen .summary-container .summary-content-container .option .button {
+    font-size: 1.4em;
+    width: 60%;
+  }
+}
+
+@media (max-width: 300px) {
+  .summaryScreen .summary-container .summary-content-container .option .button {
+    width: 80%;
+  }
 }
 
 .button {

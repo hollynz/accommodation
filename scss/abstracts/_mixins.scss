@@ -1,4 +1,4 @@
-// Tablet devices
+// Tablet devices and smaller
 @mixin tablet {
     @media (max-width: #{$tablet}){
         @content;

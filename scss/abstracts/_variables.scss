@@ -1,3 +1,4 @@
+@import '../../node_modules/bulma/sass/utilities/initial-variables.sass';
 // Colours
 $black: #000;
 $white: #fff;
@@ -19,6 +20,8 @@ $height-60: 60vh;
 $height-80: 80vh;
 $width-full: 100vw;
 $width-80: 80vw;
-
 $border-radius-small: 4px;
 $border-radius-large: 10px;
+
+// Custom breakpoints
+$nav-bp: 1087px;

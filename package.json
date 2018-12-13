@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@chenfengyuan/datepicker": "^1.0.1",
+    "bulma": "^0.7.2",
     "install": "^0.12.2",
     "izimodal": "^1.5.1",
     "jquery": "^3.1.1",
