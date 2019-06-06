@@ -208,11 +208,12 @@ function showSummary() {
     let dateRegex = /([0-2][0-9]|[3][0-1])\/([0-9][1-2])\/((19|20)[0-9]{2})/,
         locationRegex = /\w*[a-zA-Z]\w*/,
         geosearchGlassEl = $('.geosearch .glass');
-    if (!(dateFromEl.val().match(dateRegex)) || !(dateToEl.val().match(dateRegex))) {
-        slideInputContainerBackwards();
-        slideInputContainerBackwards();
-        alert("Please enter valid dates.");
-    } else if (!geosearchGlassEl.val().match(locationRegex)) {
+    // if (!(dateFromEl.val().match(dateRegex)) || !(dateToEl.val().match(dateRegex))) {
+    //     slideInputContainerBackwards();
+    //     slideInputContainerBackwards();
+    //     alert("Please enter valid dates.");
+    // } else 
+    if (!geosearchGlassEl.val().match(locationRegex)) {
         slideInputContainerBackwards();
         alert("Please enter a valid location.");
     } else if (noOfGuestsEl.val() <= 0) {
